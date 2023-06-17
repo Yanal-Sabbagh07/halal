@@ -19,7 +19,7 @@ const Header = () => {
       <div className="hidden h-full lg:flex text-stone-100">
         <DescktopNavigatr />
       </div>
-      <div className=" lg:gap-14 flex lg:w-96  items-center justify-end">
+      <div className=" lg:gap-4 flex lg:w-48  items-center justify-end ">
         <LoggingButtons />
       </div>
     </div>

@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Roboto_Slab } from "next/font/google";
 import Header from "@/components/header/Header";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 const Roboto = Roboto_Slab({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,11 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Roboto.className} `}>
-        <header className=" w-full h-16 bg-slate-900 fixed z-50 flex items-center justify-center border-b-2 border-white top-0 left-0 ">
-          <Header />
-        </header>
-        {children}
+      <body className={`${Roboto.className}`} suppressHydrationWarning={true}>
+        <AuthProvider>
+          <header className=" w-full h-16 bg-slate-900 fixed z-50 flex items-center justify-center border-b-2 border-white top-0 left-0 ">
+            <Header />
+          </header>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

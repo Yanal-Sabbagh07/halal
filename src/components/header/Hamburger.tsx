@@ -1,11 +1,11 @@
 import React from "react";
 import { IMobileNav } from "@/types/header";
 const Hamburger = ({ isOpen, setIsOpen }: IMobileNav) => {
-  const genericHamburgerLine = `h-1 w-9 my-1 rounded-full bg-white transition ease transform duration-400`;
+  const genericHamburgerLine = `h-1 w-10 my-1 rounded-full bg-white transition ease transform duration-400`;
 
   return (
     <button
-      className="flex flex-col h-16 w-20  justify-center items-center group"
+      className="flex flex-col h-16 w-16  justify-center items-start group"
       onClick={() => setIsOpen(!isOpen)}
     >
       <div

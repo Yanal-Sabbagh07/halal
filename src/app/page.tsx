@@ -1,8 +1,12 @@
-import Image from "next/image";
+"use client";
 import Title from "@/components/heroSection/Title";
 import HeroHome from "@/components/heroSection/HeroHome";
 import Links from "@/components/heroSection/Links";
+import { useSession } from "next-auth/react";
+
 export default function Home() {
+  const session = useSession();
+  console.log(session);
   return (
     <main className=" flex bg-slate-900  flex-col items-center justify-between">
       <section className="mt-16 overflow-x-hidden">
