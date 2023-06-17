@@ -15,7 +15,7 @@ export default function Home() {
           <HeroHome />
           <Links />
         </div>
-        <div className="hidden lg:flex w-screen h-[calc(100vh-64px)] bg-hero-descktop bg-center bg-cover ">
+        <div className="hidden lg:flex w-full h-[calc(100vh-64px)] bg-hero-descktop bg-center bg-cover ">
           <div className="flex flex-col w-3/4 h-full items-start justify-center">
             <div className="flex items-center justify-start h-64 ">
               <Title />

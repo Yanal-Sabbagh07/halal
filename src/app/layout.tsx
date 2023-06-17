@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${Roboto.className} `}>
-        <header className="w-full h-16 bg-slate-900 fixed z-50 flex items-center justify-center border-b-2 border-white">
+        <header className=" w-full h-16 bg-slate-900 fixed z-50 flex items-center justify-center border-b-2 border-white top-0 left-0 ">
           <Header />
         </header>
         {children}
