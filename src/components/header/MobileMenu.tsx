@@ -31,10 +31,10 @@ const MobileMenu = ({ isOpen, setIsOpen }: IMobileNav) => {
       </li>
       <li className="listItemMobile">
         <Link
-          href="/cloathing"
-          className={pathname === "/cloathing" ? "active-mobile" : "navlink"}
+          href="/clothing"
+          className={pathname === "/clothing" ? "active-mobile" : "navlink"}
         >
-          Cloathing
+          Clothing
         </Link>
       </li>
       <li className="listItemMobile">
