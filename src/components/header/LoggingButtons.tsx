@@ -17,7 +17,7 @@ const LoggingButtons = () => {
       <>
         <button
           onClick={() => signOut()}
-          className="hidden rounded-3xl text-slate-900 lg:rounded-full bg-green-500 lg:bg-gray-200  md:flex h-10 w-16 md:w-20 lg:w-20 cursor-pointer items-center justify-center font-semibold hover:font-extrabold hover:bg-white"
+          className="hidden h-10 w-16 cursor-pointer items-center justify-center  rounded-3xl bg-green-500 font-semibold text-slate-900 hover:bg-white hover:font-extrabold md:flex md:w-20 lg:w-20 lg:rounded-full lg:bg-gray-200"
         >
           Sign out
         </button>
@@ -35,18 +35,17 @@ const LoggingButtons = () => {
   return (
     <>
       <Link
-        className="rounded-3xl text-slate-900 lg:rounded-full bg-green-500 lg:bg-gray-200  flex h-10 w-16 lg:w-20 cursor-pointer items-center justify-center font-semibold hover:font-extrabold hover:bg-white"
+        className="flex h-10 w-16 cursor-pointer items-center  justify-center rounded-3xl bg-green-500 font-semibold text-slate-900 hover:bg-white hover:font-extrabold lg:w-20 lg:rounded-full lg:bg-gray-200"
         href="/login"
       >
         Login
       </Link>
-      <div
-        className=" hidden h-10 w-24 cursor-pointer items-center justify-center 
-      rounded-full bg-green-600 font-semibold 
-      text-gray-100 hover:bg-green-500 hover:font-semibold lg:flex"
+      <Link
+        className=" hidden h-10 w-24 cursor-pointer items-center justify-center rounded-full bg-green-600 font-semibold text-gray-100 hover:bg-green-500 hover:font-semibold lg:flex"
+        href="/regester"
       >
         Sign up
-      </div>
+      </Link>
     </>
   );
 };
