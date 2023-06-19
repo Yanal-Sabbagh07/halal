@@ -12,7 +12,6 @@ interface UserData {
 }
 
 const RegesterForm = () => {
-  // const url = process.env.NEXTAUTH_URL; try to figure out how it works
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string>("");
   const [data, setData] = useState<UserData>({
@@ -51,7 +50,7 @@ const RegesterForm = () => {
   return (
     <>
       <form
-        className="flex h-72 flex-col justify-between"
+        className="flex h-80 flex-col justify-between"
         onSubmit={handleSubmit}
       >
         <input
@@ -61,7 +60,7 @@ const RegesterForm = () => {
           value={data.name}
           placeholder="Name"
           onChange={handleChange}
-          className="h-10 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500 lg:w-80"
+          className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500 lg:w-80"
         ></input>
         <input
           type="email"
@@ -69,7 +68,7 @@ const RegesterForm = () => {
           name="email"
           value={data.email}
           placeholder="Email"
-          className="h-10 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500 lg:w-80"
+          className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500 lg:w-80"
           onChange={handleChange}
         ></input>
         <input
@@ -78,7 +77,7 @@ const RegesterForm = () => {
           value={data.password}
           type="password"
           placeholder="Password"
-          className="h-10 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
+          className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
           onChange={handleChange}
         ></input>
         <input
@@ -87,7 +86,7 @@ const RegesterForm = () => {
           name="confirm"
           value={data.confirm}
           placeholder="Confirm Password"
-          className="h-10 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
+          className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
           onChange={handleChange}
         ></input>
         <button

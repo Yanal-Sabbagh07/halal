@@ -7,19 +7,19 @@ import DescktopNavigatr from "./DescktopNavigatr";
 const Header = () => {
   return (
     <div
-      className=" w-[calc(100%-24px)] h-14  bg-slate-900  flex items-center justify-between
+      className=" flex h-14  w-[calc(100%-24px)]  items-center justify-between 
       lg:w-[calc(100%-96px)]  "
     >
-      <div className="lg:hidden">
+      <div className="lg:hidden ">
         <MobileNav />
       </div>
-      <div>
+      <div className=" lg:w-1/4">
         <Logo />
       </div>
-      <div className="hidden h-full lg:flex text-stone-100">
+      <div className="hidden h-full items-center justify-center text-stone-100 lg:flex lg:w-1/2 ">
         <DescktopNavigatr />
       </div>
-      <div className=" lg:gap-4 flex lg:w-48  items-center justify-end ">
+      <div className=" flex h-full items-center justify-end lg:w-1/4   lg:gap-4 ">
         <LoggingButtons />
       </div>
     </div>
