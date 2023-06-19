@@ -2,11 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
+// import Image from "next/image";
 const LoggingButtons = () => {
   const { data: session, status } = useSession();
-  const userEmail = session?.user?.email;
-  const userName = session?.user?.name;
+  // const userEmail = session?.user?.email;
+  // const userName = session?.user?.name;
   const userImage = session?.user?.image;
 
   if (status === "loading") {
