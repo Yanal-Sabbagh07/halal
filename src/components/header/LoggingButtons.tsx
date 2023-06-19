@@ -21,13 +21,15 @@ const LoggingButtons = () => {
         >
           Sign out
         </button>
-        <img
-          src={`${userImage}`}
-          width="40"
-          height="40"
-          alt="profile"
-          className=" rounded-full "
-        />
+        {userImage && (
+          <img
+            src={`${userImage}`}
+            width="40"
+            height="40"
+            alt="profile"
+            className=" rounded-full "
+          />
+        )}
         {/* <span className="hidden text-white text-sm lg:block">{userName}</span> */}
       </>
     );
