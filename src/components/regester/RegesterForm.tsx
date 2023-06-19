@@ -10,7 +10,9 @@ interface UserData {
   password: string;
   confirm: string;
 }
+
 const RegesterForm = () => {
+  // const url = process.env.NEXTAUTH_URL; try to figure out how it works
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string>("");
   const [data, setData] = useState<UserData>({
@@ -24,10 +26,7 @@ const RegesterForm = () => {
     e.preventDefault();
 
     try {
-      const apiRes = await axios.post(
-        "http://localhost:3000/api/auth/register",
-        data
-      );
+      const apiRes = await axios.post(`/api/auth/register`, data);
       // if (apiRes?.data?.success) {
       //   console.log("success");
       // }
