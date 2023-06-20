@@ -1,16 +1,35 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useSession, signIn, signOut } from "next-auth/react";
 // import Image from "next/image";
 const LoggingButtons = () => {
   const { data: session, status } = useSession();
   // const userEmail = session?.user?.email;
-  // const userName = session?.user?.name;
+  const userName = session?.user?.name;
   const userImage = session?.user?.image;
 
   if (status === "loading") {
-    return <p className="text-white">...</p>;
+    return (
+      <div
+        className="flex h-full w-full items-center justify-end md:gap-3 
+       lg:justify-end lg:gap-4 "
+      >
+        <Link
+          className="flex h-10 w-16 cursor-pointer items-center  justify-center rounded-3xl bg-green-500 font-semibold text-slate-900 hover:bg-white hover:font-extrabold lg:w-20 lg:rounded-full lg:bg-gray-200"
+          href="/login"
+        >
+          Login
+        </Link>
+        <Link
+          className=" hidden h-10 w-24 cursor-pointer items-center justify-center rounded-full bg-green-600 font-semibold text-gray-100 hover:bg-green-500 hover:font-semibold lg:flex"
+          href="/regester"
+        >
+          Sign up
+        </Link>
+      </div>
+    );
   }
   if (status === "authenticated") {
     return (
@@ -21,14 +40,22 @@ const LoggingButtons = () => {
         >
           Sign out
         </button>
-        {userImage && (
-          <img
-            src={`${userImage}`}
-            width="40"
-            height="40"
-            alt="profile"
-            className=" rounded-full "
-          />
+        {userImage ? (
+          <div className="flex  flex-col items-center justify-center">
+            <img
+              src={`${userImage}`}
+              width="40"
+              height="40"
+              alt="profile"
+              className=" rounded-full "
+            />
+            {/* <p className="text-white"> {userName} </p> */}
+          </div>
+        ) : (
+          <div className="flex  flex-col items-center justify-center">
+            <AccountCircleIcon className="h-14 w-14 text-white" />
+            {/* <p className="text-white"> {userName} </p> */}
+          </div>
         )}
         {/* <span className="hidden text-white text-sm lg:block">{userName}</span> */}
       </>
