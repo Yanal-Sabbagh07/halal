@@ -8,27 +8,27 @@ export default function Home() {
   const session = useSession();
   console.log(session);
   return (
-    <main className=" flex bg-slate-900  flex-col items-center justify-between">
+    <main className=" flex flex-col  items-center justify-between bg-darkBlue">
       <section className="mt-16 overflow-x-hidden">
         <div
-          className="w-[calc(100vw-36px)] sm:w-[calc(100vw-80px)] md:w-[calc(100vw-112px)] h-[calc(100svh-64px)] 
-          flex flex-col items-center justify-evenly 
+          className="flex h-[calc(100svh-64px)] w-[calc(100vw-36px)] flex-col 
+          items-center justify-evenly sm:w-[calc(100vw-80px)] md:w-[calc(100vw-112px)] 
             lg:hidden"
         >
           <Title />
           <HeroHome />
           <Links />
         </div>
-        <div className="hidden lg:flex w-full h-[calc(100vh-64px)] bg-hero-descktop bg-center bg-cover ">
-          <div className="flex flex-col w-3/4 h-full items-start justify-center">
-            <div className="flex items-center justify-start h-64 ">
+        <div className="hidden h-[calc(100vh-64px)] w-full bg-hero-descktop-blue bg-cover bg-center lg:flex ">
+          <div className="flex h-full w-3/4 flex-col items-start justify-center">
+            <div className="flex h-64 items-center justify-start ">
               <Title />
             </div>
-            <div className="flex items-start justify-start  w-full ">
+            <div className="flex w-full items-start  justify-start ">
               <Links />
             </div>
           </div>
-          <div className="flex w-[620px] h-full items-center justify-center  2xl:w-[750px]">
+          <div className="flex h-full w-[620px] items-center justify-center  2xl:w-[750px]">
             <HeroHome />
           </div>
         </div>
