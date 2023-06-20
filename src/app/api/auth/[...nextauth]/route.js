@@ -11,9 +11,14 @@ const handler = NextAuth({
       clientSecret: process.env.NEXTAUTH_SECRET,
     }),
     CredentialsProvider({
-      id: "credentials",
-      name: "Credentials",
+      name: "credentials",
+      credentials: {
+        email: { type: "email", placeholder: "Email" },
+        password: { typer: "password", placeholder: "Password" },
+      },
+      // the authorize methode inside credential provider will be called when user hit signin
       async authorize(credentials, req) {
+        // here we have to check in our users DB to see that if such a user is existed and if the pass is correct then we return the user object into the session of the next Auth which means the user is Authenticated
         await connectToMongoDB();
         try {
           const user = await User.findOne({ email: credentials.email });

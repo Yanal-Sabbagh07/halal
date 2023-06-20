@@ -6,7 +6,7 @@ import LoginWithGoogle from "@/components/login/LoginWithGoogle";
 const page = () => {
   return (
     <div className="mt-16 flex h-[calc(100svh-64px)]  items-center justify-center ">
-      <div className=" flex h-5/6 w-[calc(100%-36px)] flex-col items-center justify-around rounded-lg  border-2 border-gray-300 text-center sm:w-3/4  sm:rounded-3xl lg:w-[calc(42.5%)] ">
+      <div className=" flex h-5/6 w-[calc(100%-36px)] flex-col items-center justify-around rounded-lg  border-2 border-gray-300 text-center sm:w-3/4  sm:rounded-3xl lg:w-[calc(42%)] ">
         <h1 className="mt-1 text-xl font-bold text-gray-700">
           Log in to Islamic Corner
         </h1>
