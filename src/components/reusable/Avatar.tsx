@@ -29,7 +29,7 @@ const Avatar = ({ userName }: IAvatarprops) => {
         <div className="flex h-full w-full flex-col items-center justify-between">
           <div className="flex  w-full flex-col items-center justify-between ">
             <AccountCircleIcon
-              style={{ width: "56px", height: "56px" }}
+              style={{ width: "86px", height: "86px" }}
               className="  text-blue-800"
             />
 
