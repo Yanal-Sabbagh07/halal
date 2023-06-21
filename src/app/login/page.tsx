@@ -1,16 +1,19 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SyncIcon from "@mui/icons-material/Sync";
 
 import LoginForm from "@/components/login/LoginForm";
 import Link from "next/link";
 import LoginWithGoogle from "@/components/login/LoginWithGoogle";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 const Page = () => {
   const { status } = useSession();
   const router = useRouter();
+  const params = useSearchParams();
+  const [error, setError] = useState<string | null>("");
   useEffect(() => {
+    setError(params.get("error"));
     if (status === "authenticated") {
       router.push("/");
     }
@@ -37,14 +40,22 @@ const Page = () => {
           <h1 className="mt-1 text-xl font-bold text-gray-700">
             Log in to Islamic Corner
           </h1>
-          <div className="flex h-72 flex-col justify-evenly ">
+          <div className="flex h-80 flex-col justify-evenly  ">
             <LoginForm />
-            <div className="flex w-full items-center justify-evenly  md:w-72 lg:w-80">
-              <div className="h-0 w-1/2 border-[1px] border-gray-300"></div>
-              <div className="w-10 text-base">Or</div>
-              <div className="flex h-0 w-1/2 border-[1px] border-gray-300 "></div>
+
+            {error && (
+              <div className="flex h-8 items-center justify-center  text-sm text-red-500">
+                {error}
+              </div>
+            )}
+            <div className="flex h-20 flex-col items-center justify-between ">
+              <div className="flex w-full items-center justify-evenly  md:w-72 lg:w-80">
+                <div className="h-0 w-1/2 border-[1px] border-gray-300"></div>
+                <div className="w-10 text-base">Or</div>
+                <div className="flex h-0 w-1/2 border-[1px] border-gray-300 "></div>
+              </div>
+              <LoginWithGoogle />
             </div>
-            <LoginWithGoogle />
           </div>
           <div className="flex h-28 flex-col items-start justify-evenly ">
             <div className="flex w-full items-center justify-between  sm:w-72 md:justify-evenly lg:w-80">
