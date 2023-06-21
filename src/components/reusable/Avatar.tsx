@@ -14,18 +14,24 @@ const Avatar = ({ userName }: IAvatarprops) => {
       className="group relative  flex  cursor-pointer flex-col items-center justify-center"
       onClick={() => setProfileClicked(!profileClicked)}
     >
-      <AccountCircleIcon className="h-14 w-14 text-blue-800" />
+      <AccountCircleIcon
+        className=" text-white"
+        style={{ width: "56px", height: "56px" }}
+      />
 
       <div
-        className={`${profileClicked && "opacity-100"} 
-        absolute right-0 top-[60px] h-64  w-56 rounded-md border-2 border-gray-100  
+        className={`${profileClicked && "scale-100 opacity-100"} 
+        absolute right-0 top-[60px] h-64  w-56 scale-0 rounded-md border-2 border-gray-100  
          bg-gray-100 text-white  opacity-0 transition-all after:absolute 
         after:-top-8 after:right-4 after:border-[16px] after:border-b-gray-100 after:border-l-transparent after:border-r-transparent
         after:border-t-transparent after:transition-all lg:-right-4 lg:after:right-[26px]`}
       >
         <div className="flex h-full w-full flex-col items-center justify-between">
           <div className="flex  w-full flex-col items-center justify-between ">
-            <AccountCircleIcon className="h-24 w-24  text-blue-800" />
+            <AccountCircleIcon
+              style={{ width: "56px", height: "56px" }}
+              className="  text-blue-800"
+            />
 
             <p className="text-gray-700"> {userName} </p>
           </div>
