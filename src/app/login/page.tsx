@@ -7,7 +7,7 @@ import Link from "next/link";
 import LoginWithGoogle from "@/components/login/LoginWithGoogle";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-const page = () => {
+const Page = () => {
   const { status } = useSession();
   const router = useRouter();
   useEffect(() => {
@@ -67,4 +67,4 @@ const page = () => {
   }
 };
 
-export default page;
+export default Page;
