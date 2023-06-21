@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       animation: {
         "spin-slow": "spin 90s linear infinite",
+        "spin-fast": "spin 1s linear infinite",
       },
       backgroundImage: {
         "hero-pattern": "url('/logo-white.png')",

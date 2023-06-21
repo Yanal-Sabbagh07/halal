@@ -1,65 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useSession, signIn, signOut } from "next-auth/react";
+
+import SyncIcon from "@mui/icons-material/Sync";
+import { useSession, signOut } from "next-auth/react";
 // import Image from "next/image";
+import Avatar from "../reusable/Avatar";
 const LoggingButtons = () => {
+  // const [profileClicked, setProfileClicked] = useState(false);
   const { data: session, status } = useSession();
   // const userEmail = session?.user?.email;
-  const userName = session?.user?.name;
-  const userImage = session?.user?.image;
+  const userName: string | null | undefined = session?.user?.name;
+  // const userImage: string | null | undefined = session?.user?.image;
 
   if (status === "loading") {
     return (
       <div
-        className="flex h-full w-full items-center justify-end md:gap-3 
-       lg:justify-end lg:gap-4 "
+        className=" flex h-14 w-14 items-center justify-center
+        text-white  "
       >
-        <Link
-          className="flex h-10 w-16 cursor-pointer items-center  justify-center rounded-3xl bg-green-500 font-semibold text-slate-900 hover:bg-white hover:font-extrabold lg:w-20 lg:rounded-full lg:bg-gray-200"
-          href="/login"
-        >
-          Login
-        </Link>
-        <Link
-          className=" hidden h-10 w-24 cursor-pointer items-center justify-center rounded-full bg-green-600 font-semibold text-gray-100 hover:bg-green-500 hover:font-semibold lg:flex"
-          href="/regester"
-        >
-          Sign up
-        </Link>
+        <SyncIcon
+          style={{ width: "36", height: "36px" }}
+          className=" animate-spin text-white"
+          // viewBox="0 0 24 24 "
+        ></SyncIcon>
       </div>
     );
   }
   if (status === "authenticated") {
-    return (
-      <>
-        <button
-          onClick={() => signOut()}
-          className="hidden h-10 w-16 cursor-pointer items-center justify-center  rounded-3xl bg-green-500 font-semibold text-slate-900 hover:bg-white hover:font-extrabold md:flex md:w-20 lg:w-20 lg:rounded-full lg:bg-gray-200"
-        >
-          Sign out
-        </button>
-        {userImage ? (
-          <div className="flex  flex-col items-center justify-center">
-            <img
-              src={`${userImage}`}
-              width="40"
-              height="40"
-              alt="profile"
-              className=" rounded-full "
-            />
-            {/* <p className="text-white"> {userName} </p> */}
-          </div>
-        ) : (
-          <div className="flex  flex-col items-center justify-center">
-            <AccountCircleIcon className="h-14 w-14 text-white" />
-            {/* <p className="text-white"> {userName} </p> */}
-          </div>
-        )}
-        {/* <span className="hidden text-white text-sm lg:block">{userName}</span> */}
-      </>
-    );
+    return <Avatar userName={userName} />;
   }
   return (
     <>

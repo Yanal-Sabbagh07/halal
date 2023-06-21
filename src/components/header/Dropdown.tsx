@@ -4,15 +4,15 @@ const Dropdown = () => {
   return (
     <>
       <Link
-        className="roup-hover:ease-out flex h-full cursor-pointer items-center  
-        justify-center 
-        group-hover:font-semibold group-hover:text-green-500 group-hover:duration-300"
+        className="flex h-full cursor-pointer items-center justify-center  
+        group-hover:font-semibold 
+        group-hover:text-green-500 group-hover:duration-300 group-hover:ease-out"
         href="/products"
       >
         Products
       </Link>
       <div
-        className=" invisible  absolute -left-0 top-[62px]  mt-0 h-0 w-32 scale-0 
+        className=" invisible  absolute -left-0 top-[60px]  mt-0 h-0 w-32 scale-0 
         rounded-b-md bg-gray-100 text-base text-gray-700 opacity-0
         transition-all group-hover:visible group-hover:h-20 group-hover:translate-x-0
         group-hover:scale-100 group-hover:border-2 

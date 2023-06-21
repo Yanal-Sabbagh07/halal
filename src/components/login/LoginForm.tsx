@@ -20,7 +20,7 @@ const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password } = data;
-    signIn("credentials", { email, password });
+    await signIn("credentials", { email, password });
   };
   return (
     <form
