@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import SyncIcon from "@mui/icons-material/Sync";
-
 import LoginForm from "@/components/login/LoginForm";
-import Link from "next/link";
+import LinkToLogin from "@/components/login/LinkToLogin";
 import LoginWithGoogle from "@/components/login/LoginWithGoogle";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -42,36 +41,16 @@ const Page = () => {
           </h1>
           <div className="flex h-80 flex-col justify-evenly  ">
             <LoginForm />
-
-            {error && (
-              <div className="flex h-8 items-center justify-center  text-sm text-red-500">
-                {error}
-              </div>
-            )}
-            <div className="flex h-20 flex-col items-center justify-between ">
-              <div className="flex w-full items-center justify-evenly  md:w-72 lg:w-80">
-                <div className="h-0 w-1/2 border-[1px] border-gray-300"></div>
-                <div className="w-10 text-base">Or</div>
-                <div className="flex h-0 w-1/2 border-[1px] border-gray-300 "></div>
-              </div>
-              <LoginWithGoogle />
-            </div>
+            <>
+              {error && (
+                <div className="flex h-8 items-center justify-center  text-sm text-red-500">
+                  {error}
+                </div>
+              )}
+            </>
+            <LoginWithGoogle />
           </div>
-          <div className="flex h-28 flex-col items-start justify-evenly ">
-            <div className="flex w-full items-center justify-between  sm:w-72 md:justify-evenly lg:w-80">
-              <div className="h-0 w-10 border-[1px] border-gray-300 sm:w-10 lg:w-14"></div>
-              <div className="sm:w-54  md:text-md text-sm">
-                Don&apos;t have a Halali account?
-              </div>
-              <div className="flex h-0 w-10 border-[1px] border-gray-300 sm:w-10 lg:w-14"></div>
-            </div>
-            <Link
-              className="relative flex h-12  w-72 items-center justify-evenly rounded-full border-2 text-gray-700 hover:bg-gray-700 hover:text-gray-100 lg:w-80"
-              href={"/regester"}
-            >
-              Regester
-            </Link>
-          </div>
+          <LinkToLogin />
         </div>
       </div>
     );
