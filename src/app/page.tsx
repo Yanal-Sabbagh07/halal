@@ -8,7 +8,7 @@ export default function Home() {
   const session = useSession();
   console.log(session);
   return (
-    <main className=" flex flex-col  items-center justify-between bg-gray-950">
+    <main className=" flex flex-col  items-center justify-between bg-gray-900">
       <section className="mt-16 overflow-x-hidden">
         <div
           className="flex h-[calc(100svh-64px)] w-[calc(100vw-36px)] flex-col 
