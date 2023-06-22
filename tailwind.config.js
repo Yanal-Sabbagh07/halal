@@ -13,10 +13,7 @@ module.exports = {
       },
       backgroundImage: {
         "hero-pattern": "url('/logo-white.png')",
-        "hero-descktop": "url('/hero-dark-blue.png')",
-        "hero-descktop-blue": "url('/dark-blue-hero.png')",
-        "hero-descktop-black": "url('/hero-black.png')",
-        "hero-black-new": "url('/hero-black-2.png')",
+
         "hero-dark-gray": "url('/gray-950.png')",
       },
       backgroundColor: {
