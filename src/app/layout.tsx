@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${Roboto.className}`} suppressHydrationWarning={true}>
         <AuthProvider>
-          <header className=" fixed left-0 top-0 z-50 flex h-16 w-full items-center justify-center border-b-2 border-white bg-darkBlue ">
+          <header className=" fixed left-0 top-0 z-50 flex h-16 w-full items-center justify-center border-b-2 border-white bg-gray-950 ">
             <Header />
           </header>
           {children}

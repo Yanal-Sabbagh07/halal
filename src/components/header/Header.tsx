@@ -13,12 +13,12 @@ const Header = () => {
       <div className="flex w-1/3 items-center justify-center lg:w-1/4 lg:justify-start">
         <Logo />
       </div>
-      <div className="hidden h-full items-center justify-center text-stone-100 lg:flex lg:w-1/2 ">
+      <div className="hidden h-full items-center justify-center text-gray-300 lg:flex lg:w-1/2 ">
         <DescktopNavigatr />
       </div>
       <div
         className="flex h-full w-1/3 items-center justify-end md:gap-3 
-      lg:w-1/4  lg:justify-end lg:gap-4 "
+        lg:w-1/4 lg:justify-end lg:gap-4 "
       >
         <LoggingButtons />
       </div>
