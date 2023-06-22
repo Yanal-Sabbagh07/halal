@@ -6,7 +6,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: IMobileNav) => {
   const pathname = usePathname();
   return (
     <ul
-      className="absolute  min-h-[calc(100vh-64px)] bg-gray-50  right-0 w-full flex flex-col items-center justify-evenly trnsition ease transform duration-300 text-gray-700 text-xl top-16"
+      className="trnsition  ease absolute  right-0 top-16 flex min-h-[calc(100svh-64px)] w-full transform flex-col items-center justify-evenly bg-gray-50 text-xl text-gray-700 duration-300"
       style={{
         left: isOpen ? "0px" : "-100vw",
         opacity: isOpen ? "1" : "0.5",
