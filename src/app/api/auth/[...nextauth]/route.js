@@ -28,24 +28,25 @@ const authOptions = {
           const user = await authOptions.adapter.getUserByEmail(
             credentials.email
           );
-          if (user) {
-            return user;
-          } else {
-            return null;
-          }
+
           // if (user) {
-          //   const isPasswordCorrect = await bcrypt.compare(
-          //     credentials.password,
-          //     user.password
-          //   );
-          //   if (isPasswordCorrect) {
-          //     return user;
-          //   } else {
-          //     throw new Error("Wrong Email or Password");
-          //   }
+          //   return user;
           // } else {
-          //   throw new Error("User not found!");
+          //   return null;
           // }
+          if (user) {
+            const isPasswordCorrect = await bcrypt.compare(
+              credentials.password,
+              user.password
+            );
+            if (isPasswordCorrect) {
+              return user;
+            } else {
+              throw new Error("Wrong Email or Password");
+            }
+          } else {
+            throw new Error("User not found!");
+          }
         } catch (error) {
           throw new Error(error);
         }
