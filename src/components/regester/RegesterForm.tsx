@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import axios, { AxiosError } from "axios";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 interface UserData {
   name: string;
@@ -20,6 +21,8 @@ const RegesterForm = () => {
     password: "",
     confirm: "",
   });
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +53,7 @@ const RegesterForm = () => {
   return (
     <>
       <form
-        className="flex h-80 flex-col justify-between"
+        className=" flex h-80 flex-col justify-between"
         onSubmit={handleSubmit}
       >
         <input
@@ -61,7 +64,7 @@ const RegesterForm = () => {
           placeholder="Name"
           onChange={handleChange}
           className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500 lg:w-80"
-        ></input>
+        />
         <input
           type="email"
           id="email"
@@ -70,25 +73,46 @@ const RegesterForm = () => {
           placeholder="Email"
           className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500 lg:w-80"
           onChange={handleChange}
-        ></input>
-        <input
-          id="password"
-          name="password"
-          value={data.password}
-          type="password"
-          placeholder="Password"
-          className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
-          onChange={handleChange}
-        ></input>
-        <input
-          type="password"
-          id="confirm"
-          name="confirm"
-          value={data.confirm}
-          placeholder="Confirm Password"
-          className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
-          onChange={handleChange}
-        ></input>
+        />
+        <div className="relative ">
+          <input
+            id="password"
+            name="password"
+            value={data.password}
+            type={!showPassword ? "Password" : "text"}
+            placeholder="password"
+            className="relative h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500  focus:border-green-500 lg:w-80"
+            onChange={handleChange}
+          />
+          <div
+            className="absolute right-4 top-2.5 cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            <VisibilityIcon
+              className={`${showPassword && "text-green-500"} $ h-6 w-6`}
+            />
+          </div>
+        </div>
+
+        <div className="relative ">
+          <input
+            type={!showConfirm ? "password" : "text"}
+            id="confirm"
+            name="confirm"
+            value={data.confirm}
+            placeholder="Confirm Password"
+            className="h-12 w-72 rounded-lg border-2 border-gray-300 pl-4 outline-none hover:border-gray-500 focus:border-green-500  lg:w-80"
+            onChange={handleChange}
+          />
+          <div
+            className="absolute right-4 top-2.5 cursor-pointer"
+            onClick={() => setShowConfirm(!showConfirm)}
+          >
+            <VisibilityIcon
+              className={`${showConfirm && "text-green-500"} $ h-6 w-6`}
+            />
+          </div>
+        </div>
         <button
           type="submit"
           className="relative flex h-12  w-72 items-center  justify-evenly rounded-full border-2 bg-green-600 text-white hover:bg-green-500 lg:w-80"

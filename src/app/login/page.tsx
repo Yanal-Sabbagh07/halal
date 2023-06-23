@@ -35,10 +35,12 @@ const Page = () => {
   if (status === "unauthenticated") {
     return (
       <div className="mt-16 flex h-[calc(100svh-64px)]  items-center justify-center ">
-        <div className=" flex h-3/4 w-[calc(100%-36px)] flex-col items-center justify-around rounded-lg  border-2 border-gray-300 text-center sm:w-3/4  sm:rounded-3xl lg:w-[calc(35%)] ">
-          <h1 className="mt-1 text-xl font-bold text-gray-700">
-            Log in to Islamic Corner
-          </h1>
+        <div className=" flex min-h-fit  w-[calc(100%-36px)] flex-col items-center justify-around rounded-lg  border-2 border-gray-300 text-center sm:w-3/4  sm:rounded-3xl lg:h-3/4 lg:w-[calc(35%)] ">
+          <div className="flex h-14 items-center justify-center">
+            <h1 className="mt-1 text-xl font-bold text-gray-700">
+              Log in to your Halal Account
+            </h1>
+          </div>
           <div className="flex h-80 flex-col justify-evenly  ">
             <LoginForm />
             <>
