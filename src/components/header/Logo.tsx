@@ -14,6 +14,7 @@ const Logo = () => {
             placeholder="blur"
             blurDataURL={"/logo-l.png"}
             className=" mt-1"
+            style={{ width: "auto", height: "auto" }}
           />
         </Link>
       </div>
