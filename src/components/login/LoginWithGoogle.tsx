@@ -3,7 +3,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { signIn } from "next-auth/react";
 const LoginWithGoogle = () => {
   return (
-    <div className="flex h-20 flex-col items-center justify-between ">
+    <div className="flex h-24 flex-col items-center justify-evenly ">
       <div className="flex w-full items-center justify-evenly  md:w-72 lg:w-80">
         <div className="h-0 w-1/2 border-[1px] border-gray-300"></div>
         <div className="w-10 text-base">Or</div>

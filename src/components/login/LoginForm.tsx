@@ -26,7 +26,7 @@ const LoginForm = () => {
   };
   return (
     <form
-      className="flex h-44 flex-col justify-between"
+      className="flex h-52 flex-col justify-evenly "
       onSubmit={handleSubmit}
     >
       <input
