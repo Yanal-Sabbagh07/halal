@@ -6,7 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToMongoDB } from "@/utils/db";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
-export const authOptions = {
+const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     GoogleProvider({
