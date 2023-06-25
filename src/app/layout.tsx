@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className=" scroll-smooth">
       <body className={`${Roboto.className}`} suppressHydrationWarning={true}>
         <AuthProvider>
           <header className=" fixed left-0 top-0 z-50 flex h-16 w-full items-center justify-center border-b-2 border-white bg-gray-900 lg:bg-gray-950 ">

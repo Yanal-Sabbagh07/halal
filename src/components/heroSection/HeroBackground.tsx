@@ -1,5 +1,5 @@
 import React from "react";
-const HeroHome = () => {
+const HeroBackground = () => {
   return (
     <div className="flex h-72 w-full justify-center md:h-96 lg:h-[620px] lg:items-center lg:justify-center  ">
       <div
@@ -10,4 +10,4 @@ const HeroHome = () => {
   );
 };
 
-export default HeroHome;
+export default HeroBackground;
