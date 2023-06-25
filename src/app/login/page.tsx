@@ -34,9 +34,9 @@ const Page = () => {
   }
   if (status === "unauthenticated") {
     return (
-      <div className="mt-16 flex h-[calc(100svh-64px)]  items-center justify-center ">
-        <div className=" flex min-h-fit w-[calc(100%-36px)] flex-col  items-center  rounded-lg border-2  border-gray-300  text-center sm:w-1/2 sm:rounded-3xl lg:h-3/4 lg:w-[calc(35%)] lg:justify-evenly">
-          <div className="justify-cente  mt-2 flex h-12 items-center text-lg">
+      <div className="mt-16 flex min-h-[calc(100svh-64px)]  items-center justify-center ">
+        <div className=" flex  w-[calc(100%-36px)] flex-col  items-center  rounded-lg border-2  border-gray-300  text-center sm:w-1/2 sm:rounded-3xl lg:h-[555px] lg:w-[calc(35%)] lg:justify-evenly">
+          <div className="mt-2  flex h-12 items-center justify-center text-lg">
             <h1 className=" text-xl font-extrabold text-gray-700">
               Log in to your Halal Account
             </h1>
