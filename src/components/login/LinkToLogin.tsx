@@ -14,7 +14,7 @@ const LinkToLogin = () => {
         className="relative flex h-12  w-72 items-center justify-evenly rounded-full border-2 text-gray-700 hover:bg-gray-700 hover:text-gray-100 lg:w-80"
         href={"/regester"}
       >
-        Regester
+        Register
       </Link>
     </div>
   );
