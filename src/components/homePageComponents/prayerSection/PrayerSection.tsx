@@ -16,7 +16,7 @@ const PrayerSection = () => {
   const [nextPrayer, setNextPrayer] = useState("");
   const [nextPrayerInHours, setNextPrayerInHours] = useState(0);
   const [nextPrayerInMinutes, setNextPrayerInMinutes] = useState(0);
-  const convertTimetoNumber = (time: string | null | undefined) => {
+  const convertTimetoNumber = (time: any) => {
     const currentTimeArray = time.getHours() + ":" + time.getMinutes();
     const number = currentTimeArray.split(":");
     return parseInt(number[0], 10) * 60 + parseInt(number[1], 10);
@@ -151,7 +151,7 @@ const PrayerSection = () => {
   ]);
   if (prayerTime)
     return (
-      <section id="prayer" className="min-h-screen w-full bg-white">
+      <section id="prayer" className="h-screen w-full bg-white">
         <div className="mt-16 flex h-[calc(100vh-64px)] w-full flex-col items-center justify-evenly  text-center">
           <div className="flex w-full items-center justify-center lg:w-[940px] ">
             <div className="flex h-20 w-[90%] items-center justify-center lg:w-5/6">
