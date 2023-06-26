@@ -20,42 +20,42 @@ const SwiperPrayer = ({
       id: 1,
       name: "Fajr",
       time: prayerTime.data.timings.Fajr,
-      bg: "bg-slate-800 text-slate-100",
+      bg: "bg-Fajr text-slate-100 bg-cover",
       active: activePrayer === "Fajr",
     },
     {
       id: 2,
       name: "Sunrise",
       time: prayerTime.data.timings.Sunrise,
-      bg: "bg-yellow-300 text-slate-700",
+      bg: "bg-Sunrise bg-cover  text-slate-100  ",
       active: activePrayer === "Sunrise",
     },
     {
       id: 3,
       name: "Dhuhr",
       time: prayerTime.data.timings.Dhuhr,
-      bg: "bg-blue-600 text-slate-100",
+      bg: "bg-Dhuhr bg-cover text-slate-100",
       active: activePrayer === "Dhuhr",
     },
     {
       id: 4,
       name: "Asr",
       time: prayerTime.data.timings.Asr,
-      bg: "bg-orange-500 text-slate-100",
+      bg: "bg-Asr bg-cover text-slate-50",
       active: activePrayer === "Asr",
     },
     {
       id: 5,
       name: "Maghrib",
       time: prayerTime.data.timings.Maghrib,
-      bg: "bg-blue-900 text-slate-100",
+      bg: "bg-Maghrib bg-cover text-slate-100",
       active: activePrayer === "Maghrib",
     },
     {
       id: 6,
       name: "Isha",
       time: prayerTime.data.timings.Isha,
-      bg: "bg-black text-slate-100",
+      bg: "bg-Isha bg-cover text-slate-100",
       active: activePrayer === "Isha",
     },
   ];
@@ -87,7 +87,7 @@ const SwiperPrayer = ({
           >
             <div
               className={`${
-                prayerSlide.active && " border-4 border-green-500"
+                prayerSlide.active && " border-8 border-green-500"
               } flex h-full w-full  flex-col items-center justify-between rounded-xl  ${
                 prayerSlide.bg
               }`}

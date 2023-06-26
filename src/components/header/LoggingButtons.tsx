@@ -23,7 +23,7 @@ const LoggingButtons = () => {
           style={{ width: "36", height: "36px" }}
           className=" animate-spin text-white"
           // viewBox="0 0 24 24 "
-        ></SyncIcon>
+        />
       </div>
     );
   }

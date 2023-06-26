@@ -13,8 +13,13 @@ module.exports = {
       },
       backgroundImage: {
         "hero-pattern": "url('/logo-white.png')",
-
         "hero-dark-gray": "url('/gray-950.png')",
+        Fajr: "url('/Fajr.webp')",
+        Sunrise: "url('/Sunrise.jpg')",
+        Dhuhr: "url('/Duhur.webp')",
+        Asr: "url('/Asr.jpg')",
+        Maghrib: "url('/Maghrib.webp')",
+        Isha: "url('/Isha.webp')",
       },
       backgroundColor: {
         darkBlue: "#071237",

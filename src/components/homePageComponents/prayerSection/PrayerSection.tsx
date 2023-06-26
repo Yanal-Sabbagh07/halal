@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import SwiperPrayer from "./SwiperPrayer";
 import Selector from "./Selector";
+import SyncIcon from "@mui/icons-material/Sync";
+
 const PrayerSection = () => {
   const [city, setCity] = useState("");
   const swiperRef: any = useRef(null);
@@ -14,7 +16,7 @@ const PrayerSection = () => {
   const [nextPrayer, setNextPrayer] = useState("");
   const [nextPrayerInHours, setNextPrayerInHours] = useState(0);
   const [nextPrayerInMinutes, setNextPrayerInMinutes] = useState(0);
-  const convertTimetoNumber = (time: any) => {
+  const convertTimetoNumber = (time: string | null | undefined) => {
     const currentTimeArray = time.getHours() + ":" + time.getMinutes();
     const number = currentTimeArray.split(":");
     return parseInt(number[0], 10) * 60 + parseInt(number[1], 10);
@@ -147,52 +149,66 @@ const PrayerSection = () => {
     baseURL,
     city,
   ]);
-
-  return (
-    <section id="prayer" className="h-screen w-full bg-white">
-      <div className="mt-16 flex h-[calc(100vh-64px)] w-full flex-col items-center justify-evenly  text-center">
-        <div className="flex w-full items-center justify-center lg:w-[940px] ">
-          <div className="h-full w-[90%] lg:w-5/6 ">
-            <Selector
-              placeholder="Select Your City"
-              data="cities"
-              state={city}
-              setState={setCity}
-            />
+  if (prayerTime)
+    return (
+      <section id="prayer" className="min-h-screen w-full bg-white">
+        <div className="mt-16 flex h-[calc(100vh-64px)] w-full flex-col items-center justify-evenly  text-center">
+          <div className="flex w-full items-center justify-center lg:w-[940px] ">
+            <div className="flex h-20 w-[90%] items-center justify-center lg:w-5/6">
+              <Selector
+                placeholder="Select Your City"
+                data="cities"
+                state={city}
+                setState={setCity}
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex h-[460px] w-full items-center justify-center bg-white">
-          {prayerTime && (
-            <SwiperPrayer
-              swiperRef={swiperRef}
-              value={value}
-              setValue={setValue}
-              activePrayer={activePrayer}
-              prayerTime={prayerTime}
-            />
-          )}
-        </div>
-        <div className="text-base font-extrabold text-gray-800 lg:text-3xl">
-          <div className="nextPrayer">
+          <div className="flex h-[440px] w-full items-center justify-center ">
             {prayerTime && (
-              <div>
-                Time remaining for {nextPrayer} Azahn{" "}
-                {nextPrayerInHours < 1
-                  ? "00"
-                  : nextPrayerInHours || nextPrayerInHours < 10
-                  ? `0${nextPrayerInHours}`
-                  : nextPrayerInHours}
-                :
-                {nextPrayerInMinutes < 10
-                  ? `0${nextPrayerInMinutes}`
-                  : nextPrayerInMinutes}
-              </div>
+              <SwiperPrayer
+                swiperRef={swiperRef}
+                value={value}
+                setValue={setValue}
+                activePrayer={activePrayer}
+                prayerTime={prayerTime}
+              />
             )}
           </div>
+          <div className="text-base font-extrabold tracking-normal text-gray-700 sm:tracking-wider lg:text-2xl">
+            <div className="flex h-16 w-full items-center justify-center ">
+              {prayerTime && (
+                <div>
+                  Time remaining for {nextPrayer} Azahn{" : "}
+                  {nextPrayerInHours < 1
+                    ? "00"
+                    : nextPrayerInHours || nextPrayerInHours < 10
+                    ? `0${nextPrayerInHours}`
+                    : nextPrayerInHours}
+                  :
+                  {nextPrayerInMinutes < 10
+                    ? `0${nextPrayerInMinutes}`
+                    : nextPrayerInMinutes}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  else {
+    return (
+      <section
+        id="prayer"
+        className="flex h-screen w-full items-center justify-center bg-white"
+      >
+        <SyncIcon
+          style={{ width: "36", height: "36px" }}
+          className=" animate-spin text-black"
+          // viewBox="0 0 24 24 "
+        />
+      </section>
+    );
+  }
 };
 
 export default PrayerSection;
