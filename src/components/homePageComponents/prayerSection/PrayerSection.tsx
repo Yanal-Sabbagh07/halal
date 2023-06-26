@@ -152,7 +152,7 @@ const PrayerSection = () => {
     <section id="prayer" className="h-screen w-full bg-white">
       <div className="mt-16 flex h-[calc(100vh-64px)] w-full flex-col items-center justify-evenly  text-center">
         <div className="flex w-full items-center justify-center lg:w-[940px] ">
-          <div className="h-full w-5/6 ">
+          <div className="h-full w-[90%] lg:w-5/6 ">
             <Selector
               placeholder="Select Your City"
               data="cities"

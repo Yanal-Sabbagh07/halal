@@ -6,6 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Clock from "./Clock";
+import AzahnPlayer from "./AzahnPlayer";
 
 const SwiperPrayer = ({
   swiperRef,
@@ -19,42 +20,43 @@ const SwiperPrayer = ({
       id: 1,
       name: "Fajr",
       time: prayerTime.data.timings.Fajr,
-      bg: "bg-slate-800",
+      bg: "bg-slate-800 text-slate-100",
       active: activePrayer === "Fajr",
     },
     {
       id: 2,
       name: "Sunrise",
       time: prayerTime.data.timings.Sunrise,
-      bg: "bg-red-500",
+      bg: "bg-yellow-300 text-slate-700",
       active: activePrayer === "Sunrise",
     },
     {
       id: 3,
       name: "Dhuhr",
       time: prayerTime.data.timings.Dhuhr,
-      bg: "bg-blue-500",
+      bg: "bg-blue-600 text-slate-100",
+      active: activePrayer === "Dhuhr",
     },
     {
       id: 4,
       name: "Asr",
       time: prayerTime.data.timings.Asr,
-      bg: "bg-orange-500",
+      bg: "bg-orange-500 text-slate-100",
       active: activePrayer === "Asr",
     },
     {
       id: 5,
       name: "Maghrib",
       time: prayerTime.data.timings.Maghrib,
-      bg: "bg-blue-900",
-      active: false,
+      bg: "bg-blue-900 text-slate-100",
+      active: activePrayer === "Maghrib",
     },
     {
       id: 6,
       name: "Isha",
       time: prayerTime.data.timings.Isha,
-      bg: "bg-black",
-      active: false,
+      bg: "bg-black text-slate-100",
+      active: activePrayer === "Isha",
     },
   ];
   return (
@@ -80,26 +82,26 @@ const SwiperPrayer = ({
       >
         {prayers.map((prayerSlide) => (
           <SwiperSlide
-            style={{
-              width: "320px",
-              height: "410px",
-            }}
             key={prayerSlide.id}
+            className="!h-[400px] !w-[90%] sm:!w-[320px]"
           >
             <div
               className={`${
-                prayerSlide.active && " border-8 border-green-500"
-              } flex h-full w-full  flex-col items-center justify-around rounded-xl ${
+                prayerSlide.active && " border-4 border-green-500"
+              } flex h-full w-full  flex-col items-center justify-between rounded-xl  ${
                 prayerSlide.bg
-              } text-white`}
+              }`}
             >
-              <div className="space-x-2 text-4xl font-black tracking-widest">
+              <div className="mt-4 text-4xl font-black tracking-widest">
                 <Clock value={value} setValue={setValue} />
               </div>
-              <div className=" font-bold">
-                <p className="text-2xl">{prayerSlide.name}</p>{" "}
-                <p className="text-xl"> {prayerSlide.time}</p>
+
+              <div className="mb-4 text-2xl font-bold">
+                <p className=" tracking-wider">{prayerSlide.name}</p>{" "}
+                <p className=" tracking-widest"> {prayerSlide.time}</p>
               </div>
+
+              {prayerSlide.active && <AzahnPlayer />}
             </div>
           </SwiperSlide>
         ))}

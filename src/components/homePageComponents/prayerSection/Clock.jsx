@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 const Clock = (props) => {
   useEffect(() => {
     const interval = setInterval(() => props.setValue(new Date()), 1000);
