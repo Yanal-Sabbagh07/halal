@@ -4,8 +4,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import cities from "@/app/data/cities";
-// import { surahs } from "@app/data/surah";
-// import { editions } from "@app/data/editions";
+import { surahs } from "@/app/data/surah";
+import { editions } from "@/app/data/editions";
 
 const Selector = (props) => {
   const handleChange = (event) => {
@@ -48,7 +48,9 @@ const Selector = (props) => {
           minWidth: 150,
         }}
       >
-        <InputLabel id="surahs-label">{props.placeholder}</InputLabel>
+        <InputLabel id="surahs-label" className="text-white">
+          {props.placeholder}
+        </InputLabel>
         <Select
           labelId="surahs-label"
           id="surahs-selector"
@@ -56,7 +58,7 @@ const Selector = (props) => {
           label={props.placeholder}
           onChange={handleChange}
           sx={{
-            color: "#d0d7de",
+            color: "#ccc",
             ".MuiOutlinedInput-notchedOutline": {
               borderColor: "#424a53",
               borderWidth: "3px",
@@ -98,7 +100,9 @@ const Selector = (props) => {
         className="form-control"
         sx={{ m: 0, minWidth: 150 }}
       >
-        <InputLabel id="surahs-label">{props.placeholder}</InputLabel>
+        <InputLabel id="surahs-label" className="text-white">
+          {props.placeholder}
+        </InputLabel>
         <Select
           labelId="surahs-label"
           id="surahs-selector"
@@ -142,7 +146,9 @@ const Selector = (props) => {
         className="form-control"
         sx={{ m: 0, minWidth: 150 }}
       >
-        <InputLabel id="edition-label">{props.placeholder}</InputLabel>
+        <InputLabel id="edition-label" className="text-white">
+          {props.placeholder}
+        </InputLabel>
         <Select
           labelId="edition-label"
           id="edition-selector"

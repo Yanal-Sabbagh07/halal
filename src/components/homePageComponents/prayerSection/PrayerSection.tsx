@@ -152,7 +152,7 @@ const PrayerSection = () => {
   if (prayerTime)
     return (
       <section id="prayer" className="h-screen w-full bg-white">
-        <div className="mt-16 flex h-[calc(100vh-64px)] w-full flex-col items-center justify-evenly  text-center">
+        <div className="mt-10 flex h-[calc(100vh-64px)] w-full flex-col items-center justify-evenly text-center  lg:mt-16">
           <div className="flex w-full items-center justify-center lg:w-[940px] ">
             <div className="flex h-20 w-[90%] items-center justify-center lg:w-5/6">
               <Selector
