@@ -48,7 +48,7 @@ const Selector = (props) => {
           minWidth: 150,
         }}
       >
-        <InputLabel id="surahs-label" className="text-white">
+        <InputLabel id="surahs-label" className="!text-gray-200">
           {props.placeholder}
         </InputLabel>
         <Select
@@ -100,7 +100,7 @@ const Selector = (props) => {
         className="form-control"
         sx={{ m: 0, minWidth: 150 }}
       >
-        <InputLabel id="surahs-label" className="text-white">
+        <InputLabel id="surahs-label" className="!text-gray-200">
           {props.placeholder}
         </InputLabel>
         <Select
@@ -146,7 +146,7 @@ const Selector = (props) => {
         className="form-control"
         sx={{ m: 0, minWidth: 150 }}
       >
-        <InputLabel id="edition-label" className="text-white">
+        <InputLabel id="edition-label" className="!text-gray-200">
           {props.placeholder}
         </InputLabel>
         <Select
