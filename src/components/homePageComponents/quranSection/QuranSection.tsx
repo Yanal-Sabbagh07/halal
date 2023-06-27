@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Selector from "@/components/homePageComponents/prayerSection/Selector";
-import QuranSelection from "./QuranSelection";
+
 const QuranSection = () => {
   const [ayah, setAyah] = useState<any>("");
   const [translation, setTranslation] = useState<any>("");
@@ -32,7 +32,7 @@ const QuranSection = () => {
     return (
       <section
         id="Quran"
-        className="min-h-full w-full overflow-x-hidden bg-gray-900"
+        className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-gray-950"
       >
         <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center text-center lg:mt-16">
           <div className="flex w-full flex-col items-center ">
