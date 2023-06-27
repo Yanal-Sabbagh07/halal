@@ -4,12 +4,15 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import cities from "@/app/data/cities";
-import { surahs } from "@/app/data/surah";
-import { editions } from "@/app/data/editions";
+// import { surahs } from "@/app/data/surah";
 
 const Selector = (props) => {
   const handleChange = (event) => {
     props.setState(event.target.value);
+  };
+  const handleSurahChange = (e) => {
+    props.setState(e.target.value);
+    props.setAyahNumber(1);
   };
   if (props.data === "cities") {
     return (
@@ -56,7 +59,7 @@ const Selector = (props) => {
           id="surahs-selector"
           value={props.state}
           label={props.placeholder}
-          onChange={handleChange}
+          onChange={handleSurahChange}
           sx={{
             color: "#ccc",
             ".MuiOutlinedInput-notchedOutline": {
@@ -76,7 +79,7 @@ const Selector = (props) => {
             },
           }}
         >
-          {surahs.map(function (e) {
+          {props.type.map(function (e) {
             return (
               <MenuItem value={e.number} key={e.name}>
                 {e.number} {e.englishName}
@@ -87,9 +90,9 @@ const Selector = (props) => {
       </FormControl>
     );
   } else if (props.data === "ayat") {
-    let numberOfAyahsInSurah = surahs[props.selected - 1].numberOfAyahs;
+    // let numberOfAyahsInSurah = surahs[props.selected - 1].numberOfAyahs;
     let ayat = [];
-    for (var i = 1; i <= numberOfAyahsInSurah; i++) {
+    for (var i = 1; i <= props.numberOfAyahsInSurah; i++) {
       ayat.push(i);
     }
 
@@ -174,9 +177,9 @@ const Selector = (props) => {
             },
           }}
         >
-          {editions.map(function (e) {
+          {props.type.map(function (e) {
             return (
-              <MenuItem value={e.identifier} key={e.name}>
+              <MenuItem value={e.identifier} key={e.identifier}>
                 {e.language}
               </MenuItem>
             );
