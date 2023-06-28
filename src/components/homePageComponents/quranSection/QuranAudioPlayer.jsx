@@ -16,6 +16,10 @@ const QuranAudioPlayer = (props) => {
   //   props.setAutomatic(true);
   //   // setAudioDuration(audioRef.current.duration);
   // };
+  const handleOnPlay = () => {
+    props.setAutomatic(true);
+    props.setAudioDuration(audioRef.current.duration);
+  };
   const handlePlaying = () => {
     props.setAutomatic(true);
     if (props.audioDuration && !isNaN(props.audioDuration))
@@ -47,7 +51,7 @@ const QuranAudioPlayer = (props) => {
         // controls
         ref={audioRef}
         // onLoadedMetadata={onLoadedMetadata}
-        // onPlay={() => props.setAutomatic(true)}
+        onPlay={handleOnPlay}
         // onEnded={handleEnded}
         onPlaying={handlePlaying}
         onPause={() => props.setAutomatic(false)}
