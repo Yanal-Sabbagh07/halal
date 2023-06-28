@@ -12,7 +12,7 @@ const QuranSection = () => {
   const [edition, setEdition] = useState("de.bubenheim");
   const [surahNumber, setSurahNumber] = useState(1);
   const [ayahNumber, setAyahNumber] = useState(1);
-  const [audioDuration, setAudioDuration] = useState<number>(20);
+  const [audioDuration, setAudioDuration] = useState<number>(2000);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
   // const audioRef: any = useRef();
   const [automatic, setAutomatic] = useState(false);
@@ -35,13 +35,13 @@ const QuranSection = () => {
 
   useEffect(() => {
     if (automatic) {
-      let time = audioDuration * 1000;
+      // let time = audioDuration * 1000;
       // const time = 5000;
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
           setAyahNumber(ayahNumber + 1);
         }
-      }, time);
+      }, audioDuration);
       return () => {
         clearInterval(interval);
       };

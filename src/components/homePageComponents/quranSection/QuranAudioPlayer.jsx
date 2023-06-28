@@ -7,7 +7,7 @@ const QuranAudioPlayer = (props) => {
   const audioRef = useRef();
   const onLoadedMetadata = () => {
     if (audioRef.current) {
-      props.setAudioDuration(Math.floor(audioRef.current.duration));
+      props.setAudioDuration(Math.floor(audioRef.current.duration) * 1000);
     }
   };
   // const handleEnded = () => {
@@ -18,10 +18,11 @@ const QuranAudioPlayer = (props) => {
     props.setAutomatic(true);
     if (props.audioDuration && !isNaN(props.audioDuration))
       props.setAudioDuration(
-        Math.floor(audioRef.current.duration - audioRef.current.currentTime)
+        Math.floor(audioRef.current.duration - audioRef.current.currentTime) *
+          1000
       );
     else {
-      props.setAudioDuration(3);
+      props.setAudioDuration(5000);
     }
   };
   // const changeWidth = (event) => {
