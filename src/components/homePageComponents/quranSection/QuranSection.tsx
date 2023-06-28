@@ -6,51 +6,50 @@ import Selector from "@/components/homePageComponents/prayerSection/Selector";
 import { surahs } from "@/app/data/surah";
 import { editions } from "@/app/data/editions";
 import QuranAudioPlayer from "./QuranAudioPlayer";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
 const QuranSection = () => {
   const [ayah, setAyah] = useState<any>("");
   const [translation, setTranslation] = useState<any>("");
   const [edition, setEdition] = useState("de.bubenheim");
   const [surahNumber, setSurahNumber] = useState(1);
   const [ayahNumber, setAyahNumber] = useState(1);
-  const [audioDuration, setAudioDuration] = useState<number>(5000);
+  const [audioDuration, setAudioDuration] = useState<number>(5);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
-  // const audioRef: any = useRef();
-  const [automatic, setAutomatic] = useState(true);
+  const audioRef: any = useRef();
+  const [automatic, setAutomatic] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  // const onLoadedMetadata: any = () => {
-  //   if (audioRef.current) {
-  //     setAudioDuration(Math.floor(audioRef.current.duration));
+  // useEffect(() => {
+  //   const time = audioDuration * 1000;
+  //   if (automatic) {
+  //     const interval = setInterval(() => {
+  //       if (ayahNumber < numberOfAyahsInSurah) {
+  //         setAyahNumber(ayahNumber + 1);
+  //       }
+  //     }, time);
+  //     return () => {
+  //       clearInterval(interval);
+  //     };
   //   }
-  // };
-  // const handleEnded = () => {
-  //   setAutomatic(true);
-  //   // setAudioDuration(audioRef.current.duration);
-  // };
-  // const handlePlaying = () => {
-  //   setAutomatic(true);
-  //   setAudioDuration(
-  //     audioRef.current.duration - audioRef.current.currentTime - 0.5
-  //   );
-  // };
-
-  useEffect(() => {
-    const time = audioDuration * 1000;
-    if (automatic) {
-      const interval = setInterval(() => {
-        if (ayahNumber < numberOfAyahsInSurah) {
-          setAyahNumber(ayahNumber + 1);
-        }
-      }, time);
-      return () => {
-        clearInterval(interval);
-      };
+  // }, [ayahNumber, audioDuration, automatic]);
+  const handlePlay = () => {
+    setIsPlaying(!isPlaying);
+    if (!isPlaying) {
+      audioRef.current.play();
+      setAutomatic(true);
+      setAudioDuration(audioRef.current.duration);
+    } else {
+      audioRef.current.pause();
+      setAutomatic(false);
     }
-  }, [ayahNumber, audioDuration, automatic]);
+  };
 
   useEffect(() => {
     // const surahUrl = `https://api.alquran.cloud/v1/surah/${city}/ar.hilali`;
     const baseURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/ar.alafasy`;
     const transURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/${edition}`;
+    const delay = audioDuration * 1000;
 
     axios.get(baseURL).then((response) => {
       setAyah(response.data);
@@ -59,14 +58,26 @@ const QuranSection = () => {
     axios.get(transURL).then((response) => {
       setTranslation(response.data);
     });
-  }, [surahNumber, ayahNumber, edition]);
+
+    if (automatic) {
+      console.log(audioDuration, delay);
+      const interval = setInterval(() => {
+        if (ayahNumber < numberOfAyahsInSurah) {
+          setAyahNumber(ayahNumber + 1);
+          setAudioDuration(audioRef.current.duration);
+        }
+      }, delay);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [surahNumber, ayahNumber, edition, automatic, audioDuration]);
 
   if (!ayah || !translation) {
     return null;
   }
 
   if (ayah || translation) {
-    console.log("delay: " + audioDuration + " automatic:" + automatic);
     return (
       <section
         id="Quran"
@@ -128,28 +139,48 @@ const QuranSection = () => {
               </div>
             </div>
           </div>
-          {/* <div className="mb-2 w-[95%] md:w-[80%]">
+          <div className="mb-2 flex h-16  w-[95%] items-center justify-between gap-2 rounded-full border-4 border-white pl-2  pr-2  md:w-[80%]">
             <audio
               src={ayah.data.audio}
-              controls
+              // controls
               ref={audioRef}
-              onLoadedMetadata={onLoadedMetadata}
-              onPlay={() => setAutomatic(true)}
-              onEnded={handleEnded}
-              onPlaying={handlePlaying}
-              onPause={() => setAutomatic(false)}
+              // onLoadedMetadata={onLoadedMetadata}
+              // onPlay={handleOnPlay}
+              // onEnded={handleEnded}
+              // onPlaying={handlePlaying}
+              // onPause={() => props.setAutomatic(false)}
               autoPlay
-              className="w-full"
+              // onLoadedMetadata={onLoadedMetadata}
+              // className="w-full"
               preload="metadata"
             />
-          </div> */}
-          <QuranAudioPlayer
-            audioDuration={audioDuration}
-            setAudioDuration={setAudioDuration}
-            automatic={automatic}
-            setAutomatic={setAutomatic}
-            src={ayah.data.audio}
-          />
+            <button onClick={handlePlay} className="">
+              {isPlaying ? (
+                <PauseIcon className="rounded-full bg-white p-1 text-[42px] text-red-500" />
+              ) : (
+                <PlayArrowIcon className=" rounded-full bg-white p-1 text-[42px] text-green-500" />
+              )}
+            </button>
+
+            {/* current time  */}
+
+            <div className="text-white">0:00</div>
+
+            {/* progerss bar */}
+
+            <input
+              type="range"
+              className="transparent relative h-4 w-full appearance-none rounded-lg border-transparent bg-neutral-200
+              outline-none"
+              // onChange={changeWidth}
+              // min={1}
+              // max={800}
+              // step={1}
+              // value={width}
+            />
+            {/* Duration */}
+            <div className="text-white">2:49</div>
+          </div>
         </div>
       </section>
     );
@@ -157,3 +188,13 @@ const QuranSection = () => {
 };
 
 export default QuranSection;
+
+{
+  /* <QuranAudioPlayer
+            audioDuration={audioDuration}
+            setAudioDuration={setAudioDuration}
+            automatic={automatic}
+            setAutomatic={setAutomatic}
+            src={ayah.data.audio}
+          /> */
+}
