@@ -5,30 +5,30 @@ const QuranAudioPlayer = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   // const [width, setWidth] = useState(100);
   const audioRef = useRef();
-  const onLoadedMetadata = () => {
-    if (audioRef.current) {
-      props.setAudioDuration(Math.floor(audioRef.current.duration) * 1000);
-    } else {
-      props.setAudioDuration(10000);
-    }
-  };
+  // const onLoadedMetadata = () => {
+  //   if (audioRef.current) {
+  //     props.setAudioDuration(Math.floor(audioRef.current.duration) * 1000);
+  //   } else {
+  //     props.setAudioDuration(10000);
+  //   }
+  // };
   // const handleEnded = () => {
   //   props.setAutomatic(true);
   //   // setAudioDuration(audioRef.current.duration);
   // };
-  const handleOnPlay = () => {
-    props.setAudioDuration(audioRef.current.duration);
-    props.setAutomatic(true);
-  };
-  const handlePlaying = () => {
-    if (props.audioDuration && !isNaN(props.audioDuration)) {
-      props.setAudioDuration(
-        Math.floor(audioRef.current.duration - audioRef.current.currentTime) *
-          1000
-      );
-      props.setAutomatic(true);
-    } else props.setAutomatic(false);
-  };
+  // const handleOnPlay = () => {
+  //   props.setAudioDuration(audioRef.current.duration);
+  //   props.setAutomatic(true);
+  // };
+  // const handlePlaying = () => {
+  //   if (props.audioDuration && !isNaN(props.audioDuration)) {
+  //     props.setAudioDuration(
+  //       Math.floor(audioRef.current.duration - audioRef.current.currentTime) *
+  //         1000
+  //     );
+  //     props.setAutomatic(true);
+  //   } else props.setAutomatic(false);
+  // };
   // const changeWidth = (event) => {
   //   setWidth(event.target.value);
   // };
@@ -49,12 +49,12 @@ const QuranAudioPlayer = (props) => {
         // controls
         ref={audioRef}
         // onLoadedMetadata={onLoadedMetadata}
-        onPlay={handleOnPlay}
+        // onPlay={handleOnPlay}
         // onEnded={handleEnded}
-        onPlaying={handlePlaying}
-        onPause={() => props.setAutomatic(false)}
-        autoPlay
-        onLoadedMetadata={onLoadedMetadata}
+        // onPlaying={handlePlaying}
+        // onPause={() => props.setAutomatic(false)}
+        // autoPlay
+        // onLoadedMetadata={onLoadedMetadata}
         // className="w-full"
         preload="metadata"
       />
