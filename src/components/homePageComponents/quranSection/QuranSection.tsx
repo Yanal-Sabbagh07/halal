@@ -135,6 +135,7 @@ const QuranSection = () => {
               <div className=" hidden  min-h-[550px] w-[40%]  flex-col items-center justify-normal gap-3 rounded-lg bg-slate-300 lg:flex">
                 <p className="mt-2">{ayah.data.surah.name}</p>
                 <p className="mb-2 w-[95%] sm:mb-0 ">{ayah.data.text}</p>
+                <p>{audioDuration}</p>
               </div>
             </div>
           </div>
