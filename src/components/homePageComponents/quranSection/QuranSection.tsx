@@ -37,11 +37,9 @@ const QuranSection = () => {
     setIsPlaying(!isPlaying);
     if (!isPlaying) {
       audioRef.current.play();
-      setAutomatic(true);
       setAudioDuration(audioRef.current.duration);
     } else {
       audioRef.current.pause();
-      setAutomatic(false);
     }
   };
 
@@ -59,7 +57,7 @@ const QuranSection = () => {
       setTranslation(response.data);
     });
 
-    if (automatic) {
+    if (isPlaying) {
       console.log(audioDuration, delay);
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
