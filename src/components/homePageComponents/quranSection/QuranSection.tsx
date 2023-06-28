@@ -37,7 +37,7 @@ const QuranSection = () => {
     setIsPlaying(!isPlaying);
     if (!isPlaying) {
       audioRef.current.play();
-      setAudioDuration(audioRef.current.duration);
+      // setAudioDuration(audioRef.current.duration);
     } else {
       audioRef.current.pause();
     }
