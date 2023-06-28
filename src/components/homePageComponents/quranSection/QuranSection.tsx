@@ -17,7 +17,7 @@ const QuranSection = () => {
   const [audioDuration, setAudioDuration] = useState<number>(5);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
   const audioRef: any = useRef();
-  const [automatic, setAutomatic] = useState(false);
+  // const [automatic, setAutomatic] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // useEffect(() => {
@@ -62,14 +62,15 @@ const QuranSection = () => {
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
           setAyahNumber(ayahNumber + 1);
-          setAudioDuration(audioRef.current.duration);
+          if (audioDuration && !isNaN(audioDuration))
+            setAudioDuration(audioRef.current.duration);
         }
       }, delay);
       return () => {
         clearInterval(interval);
       };
     }
-  }, [surahNumber, ayahNumber, edition, automatic, audioDuration]);
+  }, [surahNumber, ayahNumber, edition, isPlaying, audioDuration]);
 
   if (!ayah || !translation) {
     return null;
