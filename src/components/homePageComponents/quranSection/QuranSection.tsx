@@ -35,13 +35,13 @@ const QuranSection = () => {
 
   useEffect(() => {
     if (automatic) {
-      // let time = audioDuration * 1000;
-      // const time = 5000;
+      const time = audioDuration * 1000;
+
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
           setAyahNumber(ayahNumber + 1);
         }
-      }, audioDuration);
+      }, time);
       return () => {
         clearInterval(interval);
       };
@@ -67,6 +67,7 @@ const QuranSection = () => {
   }
 
   if (ayah || translation) {
+    console.log("delay: " + audioDuration + " automatic:" + automatic);
     return (
       <section
         id="Quran"

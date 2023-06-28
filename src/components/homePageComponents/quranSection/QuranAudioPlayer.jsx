@@ -1,45 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 const QuranAudioPlayer = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
   // const [width, setWidth] = useState(100);
   const audioRef = useRef();
-  // const onLoadedMetadata = () => {
-  //   if (audioRef.current) {
-  //     props.setAudioDuration(Math.floor(audioRef.current.duration) * 1000);
-  //   } else {
-  //     props.setAudioDuration(10000);
-  //   }
-  // };
-  // const handleEnded = () => {
-  //   props.setAutomatic(true);
-  //   // setAudioDuration(audioRef.current.duration);
-  // };
-  // const handleOnPlay = () => {
-  //   props.setAudioDuration(audioRef.current.duration);
-  //   props.setAutomatic(true);
-  // };
-  // const handlePlaying = () => {
-  //   if (props.audioDuration && !isNaN(props.audioDuration)) {
-  //     props.setAudioDuration(
-  //       Math.floor(audioRef.current.duration - audioRef.current.currentTime) *
-  //         1000
-  //     );
-  //     props.setAutomatic(true);
-  //   } else props.setAutomatic(false);
-  // };
-  // const changeWidth = (event) => {
-  //   setWidth(event.target.value);
-  // };
+
+  useEffect(() => {
+    const seconds = Math.floor(audioRef.current.duration);
+    if (seconds && !isNaN(seconds)) {
+      props.setAudioDuration(seconds);
+    }
+  }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
 
   const handlePlay = () => {
     const preValue = isPlaying;
     setIsPlaying(!preValue);
     if (!preValue) {
       audioRef.current.play();
+      // props.setAudioDuration(duration);
     } else {
       audioRef.current.pause();
+      props.setAutomatic(false);
     }
   };
   return (
@@ -53,7 +36,7 @@ const QuranAudioPlayer = (props) => {
         // onEnded={handleEnded}
         // onPlaying={handlePlaying}
         // onPause={() => props.setAutomatic(false)}
-        // autoPlay
+        autoPlay
         // onLoadedMetadata={onLoadedMetadata}
         // className="w-full"
         preload="metadata"
@@ -90,3 +73,31 @@ const QuranAudioPlayer = (props) => {
 };
 
 export default QuranAudioPlayer;
+
+// const onLoadedMetadata = () => {
+//   if (audioRef.current) {
+//     props.setAudioDuration(Math.floor(audioRef.current.duration) * 1000);
+//   } else {
+//     props.setAudioDuration(10000);
+//   }
+// };
+// const handleEnded = () => {
+//   props.setAutomatic(true);
+//   // setAudioDuration(audioRef.current.duration);
+// };
+// const handleOnPlay = () => {
+//   props.setAudioDuration(audioRef.current.duration);
+//   props.setAutomatic(true);
+// };
+// const handlePlaying = () => {
+//   if (props.audioDuration && !isNaN(props.audioDuration)) {
+//     props.setAudioDuration(
+//       Math.floor(audioRef.current.duration - audioRef.current.currentTime) *
+//         1000
+//     );
+//     props.setAutomatic(true);
+//   } else props.setAutomatic(false);
+// };
+// const changeWidth = (event) => {
+//   setWidth(event.target.value);
+// };
