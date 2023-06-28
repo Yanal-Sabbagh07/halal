@@ -8,6 +8,8 @@ const QuranAudioPlayer = (props) => {
   const onLoadedMetadata = () => {
     if (audioRef.current) {
       props.setAudioDuration(Math.floor(audioRef.current.duration) * 1000);
+    } else {
+      props.setAudioDuration(10000);
     }
   };
   // const handleEnded = () => {
