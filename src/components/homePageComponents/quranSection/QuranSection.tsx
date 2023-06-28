@@ -47,7 +47,6 @@ const QuranSection = () => {
     // const surahUrl = `https://api.alquran.cloud/v1/surah/${city}/ar.hilali`;
     const baseURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/ar.alafasy`;
     const transURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/${edition}`;
-    const delay = audioDuration * 1000;
 
     axios.get(baseURL).then((response) => {
       setAyah(response.data);
@@ -58,6 +57,7 @@ const QuranSection = () => {
     });
 
     if (isPlaying) {
+      const delay = audioDuration * 1000;
       console.log(audioDuration, delay);
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
