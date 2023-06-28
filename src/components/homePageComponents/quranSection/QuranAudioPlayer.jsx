@@ -17,19 +17,17 @@ const QuranAudioPlayer = (props) => {
   //   // setAudioDuration(audioRef.current.duration);
   // };
   const handleOnPlay = () => {
-    props.setAutomatic(true);
     props.setAudioDuration(audioRef.current.duration);
+    props.setAutomatic(true);
   };
   const handlePlaying = () => {
-    props.setAutomatic(true);
-    if (props.audioDuration && !isNaN(props.audioDuration))
+    if (props.audioDuration && !isNaN(props.audioDuration)) {
       props.setAudioDuration(
         Math.floor(audioRef.current.duration - audioRef.current.currentTime) *
           1000
       );
-    else {
-      props.setAudioDuration(5000);
-    }
+      props.setAutomatic(true);
+    } else props.setAutomatic(false);
   };
   // const changeWidth = (event) => {
   //   setWidth(event.target.value);
