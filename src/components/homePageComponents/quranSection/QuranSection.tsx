@@ -12,7 +12,7 @@ const QuranSection = () => {
   const [edition, setEdition] = useState("de.bubenheim");
   const [surahNumber, setSurahNumber] = useState(1);
   const [ayahNumber, setAyahNumber] = useState(1);
-  const [audioDuration, setAudioDuration] = useState<number>(2000);
+  const [audioDuration, setAudioDuration] = useState<number>(20);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
   // const audioRef: any = useRef();
   const [automatic, setAutomatic] = useState(false);
