@@ -14,25 +14,37 @@ const QuranSection = () => {
   const [audioDuration, setAudioDuration] = useState<number>(2000);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
   const audioRef: any = useRef();
+  const [automatic, setAutomatic] = useState(false);
 
   const onLoadedMetadata: any = () => {
     if (audioRef.current) {
-      setAudioDuration(Math.ceil(audioRef.current.duration));
-      console.log(audioDuration);
+      setAudioDuration(Math.floor(audioRef.current.duration));
     }
+  };
+  const handleEnded = () => {
+    setAutomatic(true);
+    // setAudioDuration(audioRef.current.duration);
+  };
+  const handlePlaying = () => {
+    setAutomatic(true);
+    setAudioDuration(
+      audioRef.current.duration - audioRef.current.currentTime - 0.5
+    );
   };
 
   useEffect(() => {
-    const time = audioDuration;
-    const interval = setInterval(() => {
-      if (ayahNumber < numberOfAyahsInSurah) {
-        setAyahNumber(ayahNumber + 1);
-      }
-    }, time * 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [ayahNumber, audioDuration]);
+    if (automatic) {
+      const time = audioDuration;
+      const interval = setInterval(() => {
+        if (ayahNumber < numberOfAyahsInSurah) {
+          setAyahNumber(ayahNumber + 1);
+        }
+      }, time * 1000);
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [ayahNumber, audioDuration, automatic]);
 
   useEffect(() => {
     // const surahUrl = `https://api.alquran.cloud/v1/surah/${city}/ar.hilali`;
@@ -61,7 +73,7 @@ const QuranSection = () => {
         <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center text-center lg:mt-16">
           <div className="flex w-full flex-col items-center ">
             <div
-              className="mb-4 mt-5 flex w-full flex-col items-center justify-center  gap-4 sm:mb-8 sm:mt-8 
+              className="mb-4 mt-5 flex w-full flex-col items-center justify-center  gap-4 sm:mb-4 sm:mt-4 
             sm:h-20 sm:w-[95%]  sm:flex-row sm:items-center sm:justify-evenly sm:gap-0 md:w-[80%]"
             >
               <div className="w-[95%] sm:w-[30%]">
@@ -99,8 +111,8 @@ const QuranSection = () => {
               </div>
             </div>
 
-            <div className="mb-8 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-0">
-              <div className="mb-2 flex min-h-[420px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-gray-300 sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
+            <div className="mb-4 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
+              <div className="mb-2 flex min-h-[420px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-slate-300 sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
                 <p className="mt-2 ">
                   {translation.data.surah.englishNameTranslation}
                   <span className=""></span>
@@ -108,19 +120,24 @@ const QuranSection = () => {
                 <p className="w-[98%] sm:w-[95%]">{translation.data.text}</p>
               </div>
 
-              <div className=" hidden  min-h-[550px] w-[40%]  flex-col items-center justify-normal gap-3 rounded-lg bg-gray-300 lg:flex">
+              <div className=" hidden  min-h-[550px] w-[40%]  flex-col items-center justify-normal gap-3 rounded-lg bg-slate-300 lg:flex">
                 <p className="mt-2">{ayah.data.surah.name}</p>
                 <p className="mb-2 w-[95%] sm:mb-0 ">{ayah.data.text}</p>
               </div>
             </div>
           </div>
-          <div className="ayah-section-audioContainer">
+          <div className="mb-2 w-[95%] md:w-[80%]">
             <audio
               src={ayah.data.audio}
               controls
-              autoPlay
               ref={audioRef}
               onLoadedMetadata={onLoadedMetadata}
+              onPlay={() => setAutomatic(true)}
+              onEnded={handleEnded}
+              onPlaying={handlePlaying}
+              onPause={() => setAutomatic(false)}
+              autoPlay
+              className="w-full"
             />
           </div>
         </div>
