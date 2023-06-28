@@ -20,6 +20,9 @@ const QuranAudioPlayer = (props) => {
       props.setAudioDuration(
         Math.floor(audioRef.current.duration - audioRef.current.currentTime)
       );
+    else {
+      props.setAudioDuration(7000);
+    }
   };
   // const changeWidth = (event) => {
   //   setWidth(event.target.value);
