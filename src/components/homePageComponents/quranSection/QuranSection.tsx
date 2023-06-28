@@ -35,12 +35,13 @@ const QuranSection = () => {
 
   useEffect(() => {
     if (automatic) {
-      const time = audioDuration;
+      // const time = audioDuration * 1000;
+      const time = 5000;
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
           setAyahNumber(ayahNumber + 1);
         }
-      }, time * 1000);
+      }, time);
       return () => {
         clearInterval(interval);
       };
