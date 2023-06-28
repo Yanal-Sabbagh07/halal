@@ -28,3 +28,78 @@ a {
 li {
   list-style: none;
 }
+
+/* input[type="range"] {
+  @apply appearance-none bg-transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  @apply rounded-full bg-gray-200;
+}
+
+input[type="range"]::-moz-range-track {
+  @apply rounded-full bg-gray-200;
+}
+
+input[type="range"]::-ms-track {
+  @apply rounded-full bg-green-500;
+} */
+
+/* progress bar for Safari */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 16px;
+  border-radius: 12px;
+  background: white;
+  position: relative;
+}
+/* progress bar for firefox */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 16px;
+  border-radius: 10px;
+  background: white;
+  position: relative;
+  outline: none;
+}
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+}
+
+/* thumb for chrome and Safari */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: #16a34a;
+  cursor: pointer;
+  position: relative;
+  margin: -2px 0 0 0;
+  box-sizing: border-box;
+}
+/* thumb while tracking for chrome and safari */
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background: #00c55e;
+}
+
+/* thumb for firefox  */
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: transparent;
+  background: #16a34a;
+  cursor: pointer;
+  position: relative;
+  /* margin: -2px 0 0 0; */
+  box-sizing: border-box;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.2);
+  background: #00c55e;
+}

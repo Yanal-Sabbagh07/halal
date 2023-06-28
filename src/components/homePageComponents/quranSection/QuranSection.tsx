@@ -5,6 +5,7 @@ import axios from "axios";
 import Selector from "@/components/homePageComponents/prayerSection/Selector";
 import { surahs } from "@/app/data/surah";
 import { editions } from "@/app/data/editions";
+import QuranAudioPlayer from "./QuranAudioPlayer";
 const QuranSection = () => {
   const [ayah, setAyah] = useState<any>("");
   const [translation, setTranslation] = useState<any>("");
@@ -13,24 +14,24 @@ const QuranSection = () => {
   const [ayahNumber, setAyahNumber] = useState(1);
   const [audioDuration, setAudioDuration] = useState<number>(2000);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
-  const audioRef: any = useRef();
+  // const audioRef: any = useRef();
   const [automatic, setAutomatic] = useState(false);
 
-  const onLoadedMetadata: any = () => {
-    if (audioRef.current) {
-      setAudioDuration(Math.floor(audioRef.current.duration));
-    }
-  };
-  const handleEnded = () => {
-    setAutomatic(true);
-    // setAudioDuration(audioRef.current.duration);
-  };
-  const handlePlaying = () => {
-    setAutomatic(true);
-    setAudioDuration(
-      audioRef.current.duration - audioRef.current.currentTime - 0.5
-    );
-  };
+  // const onLoadedMetadata: any = () => {
+  //   if (audioRef.current) {
+  //     setAudioDuration(Math.floor(audioRef.current.duration));
+  //   }
+  // };
+  // const handleEnded = () => {
+  //   setAutomatic(true);
+  //   // setAudioDuration(audioRef.current.duration);
+  // };
+  // const handlePlaying = () => {
+  //   setAutomatic(true);
+  //   setAudioDuration(
+  //     audioRef.current.duration - audioRef.current.currentTime - 0.5
+  //   );
+  // };
 
   useEffect(() => {
     if (automatic) {
@@ -126,7 +127,7 @@ const QuranSection = () => {
               </div>
             </div>
           </div>
-          <div className="mb-2 w-[95%] md:w-[80%]">
+          {/* <div className="mb-2 w-[95%] md:w-[80%]">
             <audio
               src={ayah.data.audio}
               controls
@@ -138,8 +139,16 @@ const QuranSection = () => {
               onPause={() => setAutomatic(false)}
               autoPlay
               className="w-full"
+              preload="metadata"
             />
-          </div>
+          </div> */}
+          <QuranAudioPlayer
+            audioDuration={audioDuration}
+            setAudioDuration={setAudioDuration}
+            automatic={automatic}
+            setAutomatic={setAutomatic}
+            src={ayah.data.audio}
+          />
         </div>
       </section>
     );
