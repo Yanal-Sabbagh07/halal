@@ -33,6 +33,12 @@ const QuranSection = () => {
   //     };
   //   }
   // }, [ayahNumber, audioDuration, automatic]);
+  function onPlaying() {
+    const seconds = audioRef.current.duration;
+    if (seconds && !isNaN(seconds)) {
+      setAudioDuration(seconds);
+    }
+  }
   const handlePlay = () => {
     setIsPlaying(!isPlaying);
     if (!isPlaying) {
@@ -62,8 +68,6 @@ const QuranSection = () => {
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
           setAyahNumber(ayahNumber + 1);
-          if (audioDuration && !isNaN(audioDuration))
-            setAudioDuration(audioRef.current.duration);
         }
       }, delay);
       return () => {
@@ -141,6 +145,7 @@ const QuranSection = () => {
           <div className="mb-2 flex h-16  w-[95%] items-center justify-between gap-2 rounded-full border-4 border-white pl-2  pr-2  md:w-[80%]">
             <audio
               src={ayah.data.audio}
+              onTimeUpdate={onPlaying}
               // controls
               ref={audioRef}
               // onLoadedMetadata={onLoadedMetadata}
