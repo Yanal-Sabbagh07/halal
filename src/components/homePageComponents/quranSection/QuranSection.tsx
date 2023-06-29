@@ -55,7 +55,7 @@ const QuranSection = () => {
       setTranslation(response.data);
     });
 
-    if (isPlaying) {
+    if (isPlaying && isFinite(audioDuration)) {
       const delay = audioDuration * 1000;
       console.log("Delay Value : " + delay);
 
