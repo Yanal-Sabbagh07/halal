@@ -18,30 +18,32 @@ const QuranSection = () => {
   const [audioDuration, setAudioDuration] = useState<number>(5);
   let numberOfAyahsInSurah = surahs[surahNumber - 1].numberOfAyahs;
   const audioRef: any = useRef();
-  // const [automatic, setAutomatic] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // function onPlaying() {
-  //   const seconds = audioRef.current.duration;
-  //   if (seconds && isFinite(seconds)) {
-  //     setAudioDuration(seconds);
-  //   }
-  // }
   const handleNext = () => {
     if (ayahNumber < numberOfAyahsInSurah) {
       setAyahNumber(ayahNumber + 1);
     }
+    if (ayahNumber === numberOfAyahsInSurah) {
+      if (surahNumber < 114) {
+        setAyahNumber(1);
+        setSurahNumber(surahNumber + 1);
+      }
+    }
   };
 
   const onLoadedMetadata = () => {
-    const seconds = audioRef.current.duration;
-    setAudioDuration(seconds);
+    setAudioDuration(audioRef.current.duration);
+  };
+
+  const handleOnplaying = () => {
+    setIsPlaying(true);
   };
   const handlePlay = () => {
-    setIsPlaying(!isPlaying);
+    // setIsPlaying(!isPlaying);
+    setIsPlaying((prev) => !prev);
     if (!isPlaying) {
       audioRef.current.play();
-      // setAudioDuration(audioRef.current.duration);
     } else {
       audioRef.current.pause();
     }
@@ -91,7 +93,7 @@ const QuranSection = () => {
         <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center text-center lg:mt-16">
           <div className="flex w-full flex-col items-center ">
             <div
-              className="mb-4 mt-5 flex w-full flex-col items-center justify-center  gap-4 sm:mb-4 sm:mt-4 
+              className="mb-1 mt-10 flex w-full flex-col items-center justify-center  gap-4 sm:mb-1 sm:mt-4 
             sm:h-20 sm:w-[95%]  sm:flex-row sm:items-center sm:justify-evenly sm:gap-0 md:w-[80%]"
             >
               <div className="w-[95%] sm:w-[30%]">
@@ -129,7 +131,7 @@ const QuranSection = () => {
               </div>
             </div>
 
-            <div className="mb-4 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
+            <div className="mb-2 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
               <div className="mb-2 flex min-h-[420px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-slate-300 sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
                 <p className="mt-2 ">
                   {translation.data.surah.englishNameTranslation}
@@ -144,48 +146,57 @@ const QuranSection = () => {
               </div>
             </div>
           </div>
-          <div className="mb-2 flex h-16  w-[95%] items-center justify-between gap-2 rounded-full border-4 border-white pl-2  pr-2  md:w-[80%]">
-            <audio
-              src={currentAyahAudio}
-              // onTimeUpdate={onPlaying}
-              // controls
-              ref={audioRef}
-              // onLoadedMetadata={onLoadedMetadata}
-              // onPlay={handleOnPlay}
-              // onEnded={handleEnded}
-              // onPlaying={handlePlaying}
-              // onPause={() => props.setAutomatic(false)}
-              autoPlay
-              onLoadedMetadata={onLoadedMetadata}
-              onEnded={handleNext}
-              // className="w-full"
-              preload="metadata"
-            />
-            <button onClick={handlePlay} className="">
-              {isPlaying ? (
-                <PauseIcon className="rounded-full bg-white p-1 text-[42px] text-red-500" />
-              ) : (
-                <PlayArrowIcon className=" rounded-full bg-white p-1 text-[42px] text-green-500" />
-              )}
-            </button>
+          {/* <div className="mb-2 flex h-16  w-[95%] items-center justify-center gap-2 rounded-full border-4 border-white pl-2  pr-2  md:w-[80%]"> */}
 
-            {/* current time  */}
+          <audio
+            src={currentAyahAudio}
+            // onTimeUpdate={onPlaying}
+            // controls
+            ref={audioRef}
+            // onLoad={() => setAudioDuration(audioRef.current.duration)}
+            // onLoadedMetadata={onLoadedMetadata}
+            // onPlay={handleOnPlay}
+            // onEnded={handleEnded}
+            // onPlaying={handlePlaying}
+            // onPause={() => props.setAutomatic(false)}
+            autoPlay
+            onLoadedMetadata={onLoadedMetadata}
+            onEnded={handleNext}
+            onPlaying={handleOnplaying}
+            // className="w-full"
+            preload="metadata"
+          />
+          <button onClick={handlePlay} className="mb-4">
+            {isPlaying ? (
+              <div className="flex w-28 items-center justify-center rounded-full border-2 bg-red-500">
+                <PauseIcon className=" p-1 text-[42px] text-white" />
+              </div>
+            ) : (
+              <div className="flex w-28 items-center justify-center rounded-full border-2 bg-green-500">
+                <PlayArrowIcon className=" p-1 text-[42px] text-white" />
+              </div>
+            )}
+          </button>
 
-            <div className="text-white">0:00</div>
+          {/* current time  */}
 
-            {/* progerss bar */}
+          {/* <div className="text-white">0:00</div> */}
 
-            <input
+          {/* progerss bar */}
+
+          {/* <input
               type="range"
               className="transparent relative h-4 w-full appearance-none rounded-lg border-transparent bg-neutral-200
               outline-none"
-            />
-            {/* Duration */}
-            <div className="text-white">0:{Math.floor(audioDuration)}</div>
-          </div>
+            /> */}
+          {/* Duration */}
+          {/* <div className="text-white">0:{Math.floor(audioDuration)}</div> */}
         </div>
+        {/* </div> */}
       </section>
     );
+  } else {
+    return <div>Loading....</div>;
   }
 };
 
