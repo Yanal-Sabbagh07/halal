@@ -27,9 +27,15 @@ const QuranSection = () => {
   //     setAudioDuration(seconds);
   //   }
   // }
+  const handleNext = () => {
+    if (ayahNumber < numberOfAyahsInSurah) {
+      setAyahNumber(ayahNumber + 1);
+    }
+  };
+
   const onLoadedMetadata = () => {
-    console.log("Onload Value : " + audioRef.current.duration);
-    setAudioDuration(audioRef.current.duration);
+    const seconds = audioRef.current.duration;
+    setAudioDuration(seconds);
   };
   const handlePlay = () => {
     setIsPlaying(!isPlaying);
@@ -55,20 +61,22 @@ const QuranSection = () => {
       setTranslation(response.data);
     });
 
-    if (isPlaying && isFinite(audioDuration)) {
-      const delay = audioDuration * 1000;
-      console.log("Delay Value : " + delay);
+    // if (isPlaying && isFinite(audioDuration)) {
+    //   const delay = audioDuration * 1000;
+    //   console.log("Delay Value : " + delay);
 
-      const interval = setInterval(() => {
-        if (ayahNumber < numberOfAyahsInSurah) {
-          setAyahNumber(ayahNumber + 1);
-        }
-      }, delay);
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [surahNumber, ayahNumber, edition, isPlaying, audioDuration]);
+    //     const interval = setInterval(() => {
+    //       if (ayahNumber < numberOfAyahsInSurah) {
+    //         setAyahNumber(ayahNumber + 1);
+
+    //       }
+    //     }, delay);
+    //     return () => {
+    //       clearInterval(interval);
+    //     };
+    //   }
+    //
+  }, [surahNumber, ayahNumber, edition]);
 
   if (!ayah || !translation) {
     return null;
@@ -148,7 +156,8 @@ const QuranSection = () => {
               // onPlaying={handlePlaying}
               // onPause={() => props.setAutomatic(false)}
               autoPlay
-              onCanPlay={onLoadedMetadata}
+              onLoadedMetadata={onLoadedMetadata}
+              onEnded={handleNext}
               // className="w-full"
               preload="metadata"
             />
