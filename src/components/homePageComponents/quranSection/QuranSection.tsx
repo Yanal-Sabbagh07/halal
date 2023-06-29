@@ -10,6 +10,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 const QuranSection = () => {
   const [ayah, setAyah] = useState<any>("");
+  const [currentAyahAudio, setCurrentAyahAudio] = useState<any>("");
   const [translation, setTranslation] = useState<any>("");
   const [edition, setEdition] = useState("de.bubenheim");
   const [surahNumber, setSurahNumber] = useState(1);
@@ -20,25 +21,16 @@ const QuranSection = () => {
   // const [automatic, setAutomatic] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // useEffect(() => {
-  //   const time = audioDuration * 1000;
-  //   if (automatic) {
-  //     const interval = setInterval(() => {
-  //       if (ayahNumber < numberOfAyahsInSurah) {
-  //         setAyahNumber(ayahNumber + 1);
-  //       }
-  //     }, time);
-  //     return () => {
-  //       clearInterval(interval);
-  //     };
+  // function onPlaying() {
+  //   const seconds = audioRef.current.duration;
+  //   if (seconds && isFinite(seconds)) {
+  //     setAudioDuration(seconds);
   //   }
-  // }, [ayahNumber, audioDuration, automatic]);
-  function onPlaying() {
-    const seconds = audioRef.current.duration;
-    if (seconds && isFinite(seconds)) {
-      setAudioDuration(seconds);
-    }
-  }
+  // }
+  const onLoadedMetadata = () => {
+    console.log("Onload Value : " + audioRef.current.duration);
+    setAudioDuration(audioRef.current.duration);
+  };
   const handlePlay = () => {
     setIsPlaying(!isPlaying);
     if (!isPlaying) {
@@ -56,6 +48,7 @@ const QuranSection = () => {
 
     axios.get(baseURL).then((response) => {
       setAyah(response.data);
+      setCurrentAyahAudio(response.data.data.audio);
     });
 
     axios.get(transURL).then((response) => {
@@ -64,7 +57,8 @@ const QuranSection = () => {
 
     if (isPlaying) {
       const delay = audioDuration * 1000;
-      console.log(audioDuration, delay);
+      console.log("Delay Value : " + delay);
+
       const interval = setInterval(() => {
         if (ayahNumber < numberOfAyahsInSurah) {
           setAyahNumber(ayahNumber + 1);
@@ -80,7 +74,7 @@ const QuranSection = () => {
     return null;
   }
 
-  if (ayah || translation) {
+  if (ayah && translation) {
     return (
       <section
         id="Quran"
@@ -144,8 +138,8 @@ const QuranSection = () => {
           </div>
           <div className="mb-2 flex h-16  w-[95%] items-center justify-between gap-2 rounded-full border-4 border-white pl-2  pr-2  md:w-[80%]">
             <audio
-              src={ayah.data.audio}
-              onTimeUpdate={onPlaying}
+              src={currentAyahAudio}
+              // onTimeUpdate={onPlaying}
               // controls
               ref={audioRef}
               // onLoadedMetadata={onLoadedMetadata}
@@ -154,7 +148,7 @@ const QuranSection = () => {
               // onPlaying={handlePlaying}
               // onPause={() => props.setAutomatic(false)}
               autoPlay
-              // onLoadedMetadata={onLoadedMetadata}
+              onLoadedMetadata={onLoadedMetadata}
               // className="w-full"
               preload="metadata"
             />
@@ -176,14 +170,9 @@ const QuranSection = () => {
               type="range"
               className="transparent relative h-4 w-full appearance-none rounded-lg border-transparent bg-neutral-200
               outline-none"
-              // onChange={changeWidth}
-              // min={1}
-              // max={800}
-              // step={1}
-              // value={width}
             />
             {/* Duration */}
-            <div className="text-white">{audioDuration}</div>
+            <div className="text-white">0:{Math.floor(audioDuration)}</div>
           </div>
         </div>
       </section>
@@ -192,13 +181,3 @@ const QuranSection = () => {
 };
 
 export default QuranSection;
-
-{
-  /* <QuranAudioPlayer
-            audioDuration={audioDuration}
-            setAudioDuration={setAudioDuration}
-            automatic={automatic}
-            setAutomatic={setAutomatic}
-            src={ayah.data.audio}
-          /> */
-}
