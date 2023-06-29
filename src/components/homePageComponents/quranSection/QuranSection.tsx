@@ -5,7 +5,6 @@ import axios from "axios";
 import Selector from "@/components/homePageComponents/prayerSection/Selector";
 import { surahs } from "@/app/data/surah";
 import { editions } from "@/app/data/editions";
-import QuranAudioPlayer from "./QuranAudioPlayer";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 const QuranSection = () => {
@@ -163,7 +162,6 @@ const QuranSection = () => {
             onLoadedMetadata={onLoadedMetadata}
             onEnded={handleNext}
             onPlaying={handleOnplaying}
-            // className="w-full"
             preload="metadata"
           />
           <button onClick={handlePlay} className="mb-4">
