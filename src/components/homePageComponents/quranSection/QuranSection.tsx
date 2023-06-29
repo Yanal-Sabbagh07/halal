@@ -148,7 +148,7 @@ const QuranSection = () => {
               // onPlaying={handlePlaying}
               // onPause={() => props.setAutomatic(false)}
               autoPlay
-              onLoadedMetadata={onLoadedMetadata}
+              onCanPlay={onLoadedMetadata}
               // className="w-full"
               preload="metadata"
             />
