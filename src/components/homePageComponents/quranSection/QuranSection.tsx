@@ -35,7 +35,7 @@ const QuranSection = () => {
   // }, [ayahNumber, audioDuration, automatic]);
   function onPlaying() {
     const seconds = audioRef.current.duration;
-    if (seconds && !isNaN(seconds)) {
+    if (seconds && isFinite(seconds)) {
       setAudioDuration(seconds);
     }
   }
