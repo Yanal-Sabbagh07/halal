@@ -166,12 +166,12 @@ const QuranSection = () => {
           />
           <button onClick={handlePlay} className="mb-4">
             {isPlaying ? (
-              <div className="flex w-28 items-center justify-center rounded-full border-2 bg-red-500">
-                <PauseIcon className=" p-1 text-[42px] text-white" />
+              <div className="flex h-12 w-28 items-center justify-center rounded-full border-2 bg-red-500 lg:w-32">
+                <PauseIcon className=" h-10  w-10 text-white" />
               </div>
             ) : (
-              <div className="flex w-28 items-center justify-center rounded-full border-2 bg-green-500">
-                <PlayArrowIcon className=" p-1 text-[42px] text-white" />
+              <div className="flex h-12 w-28 items-center justify-center rounded-full border-2 bg-green-500 lg:w-32">
+                <PlayArrowIcon className=" h-10  w-10  text-white" />
               </div>
             )}
           </button>
