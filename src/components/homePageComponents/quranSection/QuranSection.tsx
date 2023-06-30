@@ -131,20 +131,22 @@ const QuranSection = () => {
             </div>
 
             <div className="mb-4 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
-              <div className="mb-2 flex min-h-[400px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-quran bg-cover sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
-                <p className="mt-2 w-full  text-lg font-bold text-green-700">
+              <div className="flex min-h-[380px] w-[95%] flex-col items-center justify-normal gap-1 rounded-md bg-quran bg-cover pb-2 sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
+                <p className="mt-2 w-full  text-lg font-bold text-blue-700">
                   {translation.data.surah.englishNameTranslation}
                 </p>
-                <p className="mb-4  w-[98%] sm:w-[95%]">
+                <p className="mb-4  w-[98%] leading-relaxed sm:w-[95%]">
                   {translation.data.text}
                 </p>
               </div>
 
               <div className=" hidden  min-h-[550px] w-[40%]  flex-col items-center justify-normal gap-3 rounded-lg bg-quran bg-cover lg:flex">
-                <p className="mt-2 text-lg font-bold text-green-700">
+                <p className="mt-2 text-lg font-bold text-blue-700">
                   {ayah.data.surah.name}
                 </p>
-                <p className="mb-2 w-[95%] pb-4 sm:mb-0 ">{ayah.data.text}</p>
+                <p className="mb-2 w-[95%] pb-4  leading-loose sm:mb-0">
+                  {ayah.data.text}
+                </p>
               </div>
             </div>
           </div>
