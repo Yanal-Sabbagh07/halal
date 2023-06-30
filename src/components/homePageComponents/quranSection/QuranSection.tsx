@@ -89,7 +89,7 @@ const QuranSection = () => {
         id="Quran"
         className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-gray-950 "
       >
-        <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center text-center lg:mt-16">
+        <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center justify-center text-center lg:mt-16">
           <div className="flex w-full flex-col items-center ">
             <div
               className="mb-4 mt-4 flex w-full flex-col items-center justify-center  gap-4 sm:mb-2 sm:mt-4 
@@ -132,7 +132,7 @@ const QuranSection = () => {
 
             <div className="mb-4 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
               <div className="mb-2 flex min-h-[400px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-quran bg-cover sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
-                <p className="mt-2  text-lg font-bold text-green-700">
+                <p className="mt-2 w-full  text-lg font-bold text-green-700">
                   {translation.data.surah.englishNameTranslation}
                 </p>
                 <p className="mb-4  w-[98%] sm:w-[95%]">

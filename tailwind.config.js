@@ -20,7 +20,7 @@ module.exports = {
         Asr: "url('/Asr.jpg')",
         Maghrib: "url('/Maghrib.webp')",
         Isha: "url('/Isha.webp')",
-        quran: "url('/quran-yellow.png')",
+        quran: "url('/ayahbg.png')",
       },
       backgroundColor: {
         darkBlue: "#071237",
