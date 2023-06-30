@@ -87,12 +87,12 @@ const QuranSection = () => {
     return (
       <section
         id="Quran"
-        className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-gray-950"
+        className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-gray-950 "
       >
         <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center text-center lg:mt-16">
           <div className="flex w-full flex-col items-center ">
             <div
-              className="mb-1 mt-10 flex w-full flex-col items-center justify-center  gap-4 sm:mb-1 sm:mt-4 
+              className="mb-4 mt-4 flex w-full flex-col items-center justify-center  gap-4 sm:mb-2 sm:mt-4 
             sm:h-20 sm:w-[95%]  sm:flex-row sm:items-center sm:justify-evenly sm:gap-0 md:w-[80%]"
             >
               <div className="w-[95%] sm:w-[30%]">
@@ -130,18 +130,21 @@ const QuranSection = () => {
               </div>
             </div>
 
-            <div className="mb-2 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
-              <div className="mb-2 flex min-h-[420px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-slate-300 sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
-                <p className="mt-2 ">
+            <div className="mb-4 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[550px] lg:mb-4">
+              <div className="mb-2 flex min-h-[400px] w-[95%] flex-col items-center justify-normal gap-3 rounded-md bg-quran bg-cover sm:mb-0 sm:min-h-[550px] sm:rounded-lg md:w-[80%] lg:w-[40%]">
+                <p className="mt-2  text-lg font-bold text-green-700">
                   {translation.data.surah.englishNameTranslation}
-                  <span className=""></span>
                 </p>
-                <p className="w-[98%] sm:w-[95%]">{translation.data.text}</p>
+                <p className="mb-4  w-[98%] sm:w-[95%]">
+                  {translation.data.text}
+                </p>
               </div>
 
-              <div className=" hidden  min-h-[550px] w-[40%]  flex-col items-center justify-normal gap-3 rounded-lg bg-slate-300 lg:flex">
-                <p className="mt-2">{ayah.data.surah.name}</p>
-                <p className="mb-2 w-[95%] sm:mb-0 ">{ayah.data.text}</p>
+              <div className=" hidden  min-h-[550px] w-[40%]  flex-col items-center justify-normal gap-3 rounded-lg bg-quran bg-cover lg:flex">
+                <p className="mt-2 text-lg font-bold text-green-700">
+                  {ayah.data.surah.name}
+                </p>
+                <p className="mb-2 w-[95%] pb-4 sm:mb-0 ">{ayah.data.text}</p>
               </div>
             </div>
           </div>
@@ -164,7 +167,7 @@ const QuranSection = () => {
             onPlaying={handleOnplaying}
             preload="metadata"
           />
-          <button onClick={handlePlay} className="mb-4">
+          <button onClick={handlePlay} className="mb-6">
             {isPlaying ? (
               <div className="flex h-12 w-28 items-center justify-center rounded-full border-2 bg-red-500 lg:w-32">
                 <PauseIcon className=" h-10  w-10 text-white" />

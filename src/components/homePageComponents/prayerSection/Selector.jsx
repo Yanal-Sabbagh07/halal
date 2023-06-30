@@ -63,15 +63,15 @@ const Selector = (props) => {
           sx={{
             color: "#ccc",
             ".MuiOutlinedInput-notchedOutline": {
-              borderColor: "#424a53",
-              borderWidth: "3px",
+              borderColor: "#ccc",
+              borderWidth: "2px",
             },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: "#2da44e",
               borderWidth: "3px",
             },
             "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#ffffff",
+              borderColor: "#fff",
               borderWidth: "3px",
             },
             ".MuiSvgIcon-root ": {
@@ -115,8 +115,8 @@ const Selector = (props) => {
           sx={{
             color: "#d0d7de",
             ".MuiOutlinedInput-notchedOutline": {
-              borderColor: "#424a53",
-              borderWidth: "3px",
+              borderColor: "#ccc",
+              borderWidth: "2px",
             },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: "#2da44e",
@@ -161,8 +161,8 @@ const Selector = (props) => {
           sx={{
             color: "#d0d7de",
             ".MuiOutlinedInput-notchedOutline": {
-              borderColor: "#424a53",
-              borderWidth: "3px",
+              borderColor: "#ccc",
+              borderWidth: "2px",
             },
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
               borderColor: "#2da44e",
