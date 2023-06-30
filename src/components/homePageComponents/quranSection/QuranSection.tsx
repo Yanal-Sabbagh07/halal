@@ -89,7 +89,7 @@ const QuranSection = () => {
         id="Quran"
         className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-gray-950 "
       >
-        <div className="mt-2 flex min-h-[calc(100vh-64px)] w-full flex-col items-center justify-center text-center lg:mt-16">
+        <div className="mt-16 flex min-h-[calc(100vh-64px)] w-full flex-col items-center justify-center text-center lg:mt-16">
           <div className="flex w-full flex-col items-center ">
             <div
               className="mb-4 mt-4 flex w-full flex-col items-center justify-center  gap-4 sm:mb-2 sm:mt-4 
@@ -167,7 +167,7 @@ const QuranSection = () => {
             onPlaying={handleOnplaying}
             preload="metadata"
           />
-          <button onClick={handlePlay} className="mb-6">
+          <button onClick={handlePlay} className="mb-4">
             {isPlaying ? (
               <div className="flex h-12 w-28 items-center justify-center rounded-full border-2 bg-red-500 lg:w-32">
                 <PauseIcon className=" h-10  w-10 text-white" />
