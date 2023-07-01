@@ -87,7 +87,7 @@ const QuranSection = () => {
     return (
       <section
         id="Quran"
-        className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-slate-900 "
+        className="min-h-full w-full overflow-x-hidden bg-gray-900 lg:bg-slate-950 "
       >
         <div className="mt-16 flex min-h-[calc(100vh-64px)] w-full flex-col items-center justify-center  text-center sm:justify-evenly lg:mt-16">
           <div className="flex w-full flex-col items-center ">
@@ -150,19 +150,10 @@ const QuranSection = () => {
               </div>
             </div>
           </div>
-          {/* <div className="mb-2 flex h-16  w-[95%] items-center justify-center gap-2 rounded-full border-4 border-white pl-2  pr-2  md:w-[80%]"> */}
 
           <audio
             src={currentAyahAudio}
-            // onTimeUpdate={onPlaying}
-            // controls
             ref={audioRef}
-            // onLoad={() => setAudioDuration(audioRef.current.duration)}
-            // onLoadedMetadata={onLoadedMetadata}
-            // onPlay={handleOnPlay}
-            // onEnded={handleEnded}
-            // onPlaying={handlePlaying}
-            // onPause={() => props.setAutomatic(false)}
             autoPlay
             onLoadedMetadata={onLoadedMetadata}
             onEnded={handleNext}
@@ -171,31 +162,16 @@ const QuranSection = () => {
           />
           <button onClick={handlePlay} className="mb-4">
             {isPlaying ? (
-              <div className="flex h-12 w-[95vw] items-center justify-center rounded-full border-2  border-red-500 bg-red-500 lg:w-28">
+              <div className="flex h-12 w-[95vw] items-center justify-center rounded-full border-2 border-red-500  bg-red-500 lg:h-14 lg:w-[15vw]">
                 <PauseIcon className=" h-10  w-10 text-white" />
               </div>
             ) : (
-              <div className="flex h-12 w-[95vw] items-center justify-center rounded-full border-2 border-green-500 bg-green-500 lg:w-28">
+              <div className="flex h-12 w-[95vw] items-center justify-center rounded-full border-2 border-green-500 bg-green-500 lg:h-14 lg:w-[15vw]">
                 <PlayArrowIcon className=" h-10  w-10  text-white" />
               </div>
             )}
           </button>
-
-          {/* current time  */}
-
-          {/* <div className="text-white">0:00</div> */}
-
-          {/* progerss bar */}
-
-          {/* <input
-              type="range"
-              className="transparent relative h-4 w-full appearance-none rounded-lg border-transparent bg-neutral-200
-              outline-none"
-            /> */}
-          {/* Duration */}
-          {/* <div className="text-white">0:{Math.floor(audioDuration)}</div> */}
         </div>
-        {/* </div> */}
       </section>
     );
   } else {
