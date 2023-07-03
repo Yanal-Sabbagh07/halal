@@ -130,17 +130,17 @@ const QuranSection = () => {
               </div>
             </div>
 
-            <div className="mb-6 flex min-h-full w-full items-center justify-center gap-1 sm:min-h-[500px] lg:mb-0">
-              <div className="flex min-h-[380px] w-[95%] flex-col items-center justify-normal gap-1 rounded-md bg-quran bg-cover bg-center pb-2 sm:mb-0 sm:min-h-[480px]  sm:rounded-lg md:w-[70%] lg:w-[35%]">
-                <p className="mb-4 mt-2 h-10 w-full   text-xl font-bold text-green-700 lg:mb-2">
+            <div className="mb-6 flex min-h-full w-full items-center justify-center gap-0 sm:min-h-[500px] lg:mb-0">
+              <div className="flex min-h-[380px] w-[95%] flex-col items-center justify-normal   bg-quran bg-cover bg-center pb-2 sm:mb-0 sm:min-h-[480px]   md:w-[70%] lg:w-[35%]">
+                <p className="mb-0 mt-2 h-10 w-full   text-xl font-bold text-green-700 lg:mb-0">
                   {translation.data.surah.englishNameTranslation}
                 </p>
-                <p className="mb-4  w-[98%] leading-relaxed sm:w-[95%]">
+                <p className="mb-4  w-[90%] leading-relaxed sm:w-[95%]">
                   {translation.data.text}
                 </p>
               </div>
 
-              <div className=" hidden  min-h-[480px] w-[35%]  flex-col items-center justify-normal gap-3 rounded-lg bg-quran bg-cover bg-center lg:flex">
+              <div className=" hidden  min-h-[480px] w-[35%]  flex-col items-center justify-normal gap-3  bg-quran bg-cover bg-center lg:flex">
                 <p className="mt-2 h-10 w-full  text-xl font-bold text-green-700">
                   {ayah.data.surah.name}
                 </p>
