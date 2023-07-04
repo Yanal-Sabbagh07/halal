@@ -1,6 +1,6 @@
 export const editions = [
   {
-    identifier: "ar.alafasy",
+    identifier: "ar.quran-uthmani",
     language: "Arabic Original",
     name: "Original Quran",
     englishName: "Arabic Affasy",
