@@ -49,17 +49,19 @@ const QuranSection = () => {
   };
 
   useEffect(() => {
-    // const surahUrl = `https://api.alquran.cloud/v1/surah/${city}/ar.hilali`;
-    const baseURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/ar.alafasy`;
+    const audioUrl = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/ar.minshawimujawwad`; //ar.abdulsamad ar.shaatree minshawimujawwad
+    const baseURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/quran-uthmani`;
     const transURL = `https://api.alquran.cloud/v1/ayah/${surahNumber}:${ayahNumber}/${edition}`;
 
     axios.get(baseURL).then((response) => {
       setAyah(response.data);
-      setCurrentAyahAudio(response.data.data.audio);
     });
 
     axios.get(transURL).then((response) => {
       setTranslation(response.data);
+    });
+    axios.get(audioUrl).then((response) => {
+      setCurrentAyahAudio(response.data.data.audio);
     });
 
     // if (isPlaying && isFinite(audioDuration)) {
