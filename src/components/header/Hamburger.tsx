@@ -1,18 +1,17 @@
-import React from "react";
 import { IMobileNav } from "@/types/header";
 const Hamburger = ({ isOpen, setIsOpen }: IMobileNav) => {
   const genericHamburgerLine = `h-1 w-10 my-1 rounded-full bg-white transition ease transform duration-400`;
 
   return (
     <button
-      className="flex flex-col h-16 w-16  justify-center items-start group"
+      className="group flex h-16 w-16  flex-col items-start justify-center"
       onClick={() => setIsOpen(!isOpen)}
     >
       <div
         className={`${genericHamburgerLine} ${
           isOpen
-            ? "rotate-45 translate-y-3 opacity-75 group-hover:opacity-100 bg-white"
-            : "opacity-75 group-hover:opacity-100 bg-white"
+            ? "translate-y-3 rotate-45 bg-white opacity-75 group-hover:opacity-100"
+            : "bg-white opacity-75 group-hover:opacity-100"
         }`}
       />
       <div
@@ -23,7 +22,7 @@ const Hamburger = ({ isOpen, setIsOpen }: IMobileNav) => {
       <div
         className={`${genericHamburgerLine} ${
           isOpen
-            ? "-rotate-45 -translate-y-3 opacity-75 group-hover:opacity-100"
+            ? "-translate-y-3 -rotate-45 opacity-75 group-hover:opacity-100"
             : "opacity-75 group-hover:opacity-100"
         }`}
       />

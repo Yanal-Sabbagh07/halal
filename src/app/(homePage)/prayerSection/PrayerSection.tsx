@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import SwiperPrayer from "./SwiperPrayer";
-import Selector from "./Selector";
+import Selector from "@/components/ui/Selector";
 import SyncIcon from "@mui/icons-material/Sync";
 
 const PrayerSection = () => {

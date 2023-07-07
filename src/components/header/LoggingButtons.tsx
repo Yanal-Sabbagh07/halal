@@ -5,7 +5,7 @@ import Link from "next/link";
 import SyncIcon from "@mui/icons-material/Sync";
 import { useSession, signOut } from "next-auth/react";
 // import Image from "next/image";
-import Avatar from "../reusable/Avatar";
+import Avatar from "../ui/Avatar";
 const LoggingButtons = () => {
   // const [profileClicked, setProfileClicked] = useState(false);
   const { data: session, status } = useSession();
@@ -40,7 +40,7 @@ const LoggingButtons = () => {
       </Link>
       <Link
         className=" hidden h-10 w-24 cursor-pointer items-center justify-center rounded-full bg-green-600 font-semibold text-gray-100 hover:bg-green-500 hover:font-semibold lg:flex"
-        href="/regester"
+        href="/register"
       >
         Sign up
       </Link>

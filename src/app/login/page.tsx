@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import SyncIcon from "@mui/icons-material/Sync";
-import LoginForm from "@/components/login/LoginForm";
-import LinkToLogin from "@/components/login/LinkToLogin";
-import LoginWithGoogle from "@/components/login/LoginWithGoogle";
+import LoginForm from "./components/LoginForm";
+import LinkToLogin from "@/app/login/components/LinkToLogin";
+import LoginWithGoogle from "./components/LoginWithGoogle";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 const Page = () => {

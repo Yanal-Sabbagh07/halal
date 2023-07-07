@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Selector from "@/components/homePageComponents/prayerSection/Selector";
-import { surahs } from "@/app/data/surah";
-import { editions } from "@/app/data/editions";
+import Selector from "@/components/ui/Selector";
+import { surahs } from "@/data/surah";
+import { editions } from "@/data/editions";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 const QuranSection = () => {

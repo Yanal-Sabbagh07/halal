@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-import RegesterForm from "@/components/regester/RegesterForm";
+import RegesterForm from "@/app/register/components/RegesterForm";
 const page = () => {
   return (
     <div className="mt-16 flex h-[calc(100svh-64px)]  items-center justify-center ">

@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Roboto_Slab } from "next/font/google";
 import Header from "@/components/header/Header";
-import AuthProvider from "@/components/AuthProvider/AuthProvider";
+import AuthProvider from "@/providers/AuthProvider/AuthProvider";
 const Roboto = Roboto_Slab({ subsets: ["latin"] });
 
 export const metadata = {

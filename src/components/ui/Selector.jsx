@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import cities from "@/app/data/cities";
+import cities from "@/data/cities";
 // import { surahs } from "@/app/data/surah";
 
 const Selector = (props) => {
