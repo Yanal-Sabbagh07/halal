@@ -21,6 +21,7 @@ module.exports = {
         Maghrib: "url('/Maghrib.webp')",
         Isha: "url('/Isha.webp')",
         quran: "url('/100.png')",
+        quran2: "url('/200.png')",
       },
       backgroundColor: {
         darkBlue: "#071237",
